@@ -21,7 +21,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse text-white id=" navbarSupportedContent">
+      <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link text-white href=" #"> Preguntas Frecuentes <span class="sr-only">(current)</span></a>
@@ -42,7 +42,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled text-white href=" #" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled text-white"href=" #" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
           <li class="nav-item">
 
@@ -78,23 +78,23 @@
                 </div>
                 <form action="" method="post">
                   <div class="form-group">
-                    <label class="text-dark is-invalid" for="correo-txt">Ingrese con su correo eletrónico:</label>
-                    <input class="form-control" type="email" name="correo-txt" value="" required>
-                    <div class="invalid-feedback">
+                    <label class="text-dark is-invalid" for="correoPersona">Ingrese con su correo eletrónico:</label>
+                    <input class="form-control" type="email" name="correoPersona" value="" id="correoPersona1" required>
+                    <div class="invalid-feedback d-none" id="invalidaSesion2">
                       Ingrese este campo
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="text-dark is-invalid" for="clave-txt">Ingrese su contraseña:</label>
-                    <input class="form-control" type="password" name="clave-txt" value="" required>
-                    <div class="invalid-feedback d-none">
+                    <label class="text-dark is-invalid" for="passPersona">Ingrese su contraseña:</label>
+                    <input class="form-control" type="password" name="passPersona" value="" id="passPersona" required>
+                    <div class="invalid-feedback d-none" id="invalidaSesion">
                       Ingrese este campo
                     </div>
                   </div>
                   <div class="form-group">
                     <br>
                     <hr>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal"> Iniciar
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal" id="btnLoggear"> Iniciar
                       Sesión</button>
                   </div>
                 </form>
@@ -134,7 +134,7 @@
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="nombrePersona">Ingrese su Nombre:</label>
                     <input class="form-control" type="text" name="nombrePersona" value="" id="nombrePersona" required>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido9">
                       Ingrese este campo
                     </div>
                   </div>
@@ -142,28 +142,28 @@
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="apellidoMPersona">Ingrese con su apellido materno:</label>
                     <input class="form-control" type="text" name="apellidoMPersona" value="" id="apellidoMPersona" required>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido8">
                       Ingrese este campo
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="apellidoPPersona">Ingrese con su apellido paterno:</label>
                     <input class="form-control" type="text" name="apellidoPPersona" value="" id="apellidoPPersona" required>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido7">
                       Ingrese este campo
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="edadPersona">Ingrese con su edad:</label>
                     <input class="form-control" type="text" name="edadPersona" value="" id="edadPersona" required>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido6">
                       Ingrese este campo
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="rutPersona">Ingrese su rut:</label>
                     <input class="form-control" type="text" name="rutPersona" value="" id="rutPersona" required>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido5">
                       Ingrese este campo
                     </div>
                   </div>
@@ -175,7 +175,7 @@
                       <option>Banco bci</option>
                       <option>Banco scotiabank</option>
                     </select>
-                    <div class="invalid-feedback d-none">
+                    <div class="invalid-feedback d-none" id="invalido4">
                       Ingrese este campo
                     </div>
                     <div class="form-group">
@@ -185,6 +185,7 @@
                         Ingrese este campo
                       </div>
                     </div>
+                    
                     <div class="form-group">
                       <label class="text-dark is-invalid" for="contraseñaPersona">Ingrese su contraseña:</label>
                       <input class="form-control" type="password" name="clave-txt" value="" id="contraseñaPersona" required>
@@ -302,6 +303,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/registrar.js"></script>
+    <script src="js/login.js"></script>
 
 
 
