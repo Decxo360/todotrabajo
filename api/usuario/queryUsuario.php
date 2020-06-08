@@ -2,7 +2,7 @@
 require_once "../bd.php";
 $email = $_POST["email"];
 $password = $_POST["password"];
-    $sql = "SELECT * FROM usuario WHERE (email=?,password=?)";
+$sql = "SELECT * FROM usuario WHERE (email=?,password=?)";
 $bd = conectar();
 $st = $bd->prepare($sql);
 $st->bind_param("ss",$email,$password);
@@ -26,4 +26,4 @@ if ($fila = $res->fetch_row()) {
   }
   $st->close();
   echo $error;
-json_encode($usuario);
+json_encode($lista);

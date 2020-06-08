@@ -50,6 +50,7 @@
         </ul>
       </div>
       <div>
+  
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-dark text-white" data-toggle="modal"
           data-target="#staticBackdrop1">

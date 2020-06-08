@@ -10,7 +10,6 @@
     $lista = array();
     $entre= false;
     while($fila = $result->fetch_row()){
-       
         $persona = new stdClass();
         $persona->idpersona = $fila[0];
         $persona->nombre = $fila[1];
