@@ -1,11 +1,15 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once "../bd.php";
 $email = $_POST["email"];
 $password = $_POST["password"];
-$sql = "SELECT * FROM usuario WHERE (email=?,password=?)";
-$bd = conectar();
-$st = $bd->prepare($sql);
-$st->bind_param("ss",$email,$password);
+echo $email;
+echo $password;
+$sql = "SELECT * FROM usuario WHERE (email=\"?\" AND password=\"?\")";
+$mysqli = conectar();
+$st = $mysqli->prepare($sql);
+$st->bind_param("s",$email,$password);
 $st->execute();
 $res = $st->get_result();
 $error = "";
@@ -18,7 +22,6 @@ if ($fila = $res->fetch_row()) {
     $usuario->tipousuario=$fila[3];
     $usuario->rut=$fila[4];
     $_SESSION["usuario"] = $usuario;
-    header("Location:index.php");
     $lista[] = $usuario;
     exit();
   }else {

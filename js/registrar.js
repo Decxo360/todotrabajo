@@ -5,7 +5,24 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let rut = document.querySelector("#rutPersona").value;
   let tarjeta = document.querySelector("#tarjetaPersona").value;
   let edad = document.querySelector("#edadPersona").value;
+  trabajoRealizado = 0;
+  postulados = 0;
+  puntos = 0;
+  trabajoSubidos=0;
   if(!nombre == "" && !apellidoM == "" && !apellidoP == "" && !rut == "" && !tarjeta == "" && !edad==""){
+    let nuevaExperiencia = {};
+    nuevaExperiencia.trabajoRealizado = trabajoRealizado;
+    nuevaExperiencia.postulados = postulados;
+    nuevaExperiencia.puntos = puntos;
+    nuevaExperiencia.trabajoSubidos = trabajoSubidos
+    nuevaExperiencia.rut = rut;
+    console.log(nuevaExperiencia);
+    let fomrdata = new FormData();
+    fomrdata.append("trabajoRealizado", nuevaExperiencia.trabajoRealizado);
+    fomrdata.append("postulados", nuevaExperiencia.postulados);
+    fomrdata.append("puntos", nuevaExperiencia.puntos);
+    fomrdata.append("trabajoSubido", nuevaExperiencia.trabajoSubidos);
+    fomrdata.append("rut", nuevaExperiencia.rut);
     let nuevaPersona = {};
     nuevaPersona.nombre = nombre;
     nuevaPersona.apellidoM = apellidoM;
@@ -20,6 +37,7 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
     formData.append("rut", nuevaPersona.rut);
     formData.append("edad", nuevaPersona.edad);
     formData.append("tarjeta", nuevaPersona.tarjeta);
+    axios.post("api/experiencia/createExperencia.php", fomrdata);
     axios.post("api/persona/createPersona.php", formData);
   }else {
     if(nombre ==""){
@@ -50,6 +68,8 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let contraseña2 =document.querySelector("#contraseña2").value;
   let tipoUsuario = "usuario";
   let rut = document.querySelector("#rutPersona").value;
+  axios.get("api/usuario/emailUsuario.php");
+  console.log(axios.get("api/usuario/emailUsuario.php"));
   let idpersonaa;
   console.log(rut);
     let error = "";

@@ -4,14 +4,14 @@
   $postulados = $_POST["postulados"];
   $puntos = $_POST["puntos"];
   $trabajoSubido = $_POST["trabajoSubido"];
-  $idusuario = $_POST["idusuario"];
-  $sql = "INSERT INTO opiniones(trabajoRealizado,postulados,puntos,trabajoSubido,idusuario)"
-        ." VALUES(?,?)";
+  $rut = $_POST["rut"];
+  $sql = "INSERT INTO experiencia(trabajoRealizado,postulados,puntos,trabajoSubido,rut)"
+        ." VALUES(?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("iisii",$trabajoRealizado,$postulados,$puntos,$trabajoSubido,$idusuario);
+      $st->bind_param("iisis",$trabajoRealizado,$postulados,$puntos,$trabajoSubido,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

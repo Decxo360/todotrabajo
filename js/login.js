@@ -1,8 +1,7 @@
 document.querySelector("#btnLoggear").addEventListener("click", function(){
-
     let correo = document.querySelector("#correoPersona1").value;
     let pass = document.querySelector("#passPersona").value;
-    
+    console.log("'"+correo+"'");
     if(!correo=="" && !pass==""){
         let obtenerUsuario = {};
         obtenerUsuario.correo = correo;
@@ -24,12 +23,4 @@ document.querySelector("#btnLoggear").addEventListener("click", function(){
         
         
     }
-
-
-
-
-
-
-
-
 });

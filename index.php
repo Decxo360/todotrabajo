@@ -1,6 +1,33 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//session_start();
+//require_once "api/bd.php";
+//if (count($_POST)>0){
+//  $correo = $_POST["correoPersona"];
+//  $clave = $_POST["passPersona"];
+//  $sql = "SELECT * FROM usuario WHERE (email='$clave' AND password='$clave')";
+//  $bd = conectar();
+//  $st = $bd->prepare($sql);
+//  $st->bind_param("ss",$correo,$clave);
+//  $st->execute();
+//  $res = $st->get_result();
+//  if ($fila = $res->fetch_row()) {
+//    $usuario = new stdClass();
+//    $usuario->idusuario=$fila[0];
+//    $usuario->email=$fila[1];
+//    $usuario->password=$fila[2];
+//    $usuario->tipousuario=$fila[3];
+//    $usuario->rut=$fila[4];
+//    $_SESSION["usuario"] = $usuario;
+//    exit();
+//  }else {
+//    $error = "Datos erroneos O no existe el usuario";
+//  }
+//}
+ ?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -24,10 +51,10 @@
       <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link text-white href=" #"> Preguntas Frecuentes <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white" href=" #"> Preguntas Frecuentes <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white href=" #">Link</a>
+            <a class="nav-link text-white"href=" #">Link</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
@@ -50,12 +77,19 @@
         </ul>
       </div>
       <div>
-  
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-dark text-white" data-toggle="modal"
+        <?php
+        //session_start();
+        if(!isset($_SESSION["usuario"])){
+          echo '<button type="button" class="btn btn-outline-dark text-white" data-toggle="modal"
           data-target="#staticBackdrop1">
           Iniciar Sesión
-        </button>
+        </button>';
+        }else{
+          echo '<button type="button" class=btn btn-outline-dark text-white"> Cerrar Sesión </button> ';
+        }
+        ?>
+        <!-- Button trigger modal -->
+        
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1"
           role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
