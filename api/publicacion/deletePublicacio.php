@@ -1,6 +1,6 @@
 <?php
   require_once "../bd.php";
-  $idPublicacion = $_POST["idPublicacion"];
+  $idpublicacion = $_POST["idpublicacion"];
   $sql = "DELETE FROM publicacion WHERE id=?";
   $conectar = conectar();
   $respuesta = new stdClass();

@@ -1,16 +1,16 @@
 <?php
   require_once "../bd.php";
-  $FK_idpostulante = $_POST["FK_idpostulante"]; // arreglos asociativo
-  $FK_idpublicacion = $_POST["FK_idpublicacion"];
-  $FK_idusuario = $_POST["FK_idusuario"];
-  $FK_idpersona = $_POST["FK_idpersona"];
-  $sql = "INSERT INTO opiniones(FK_idpostulante,FK_idpublicacion,FK_idusuario,FK_idpersona)"
-        ." VALUES(?,?)";
+  $idpostulante = $_POST["idpostulante"]; // arreglos asociativo
+  $idpublicacion = $_POST["idpublicacion"];
+  $idusuario = $_POST["idusuario"];
+  $rut = $_POST["rut"];
+  $sql = "INSERT INTO postulacion(idpostulante,idpublicacion,idusuario,rut)"
+        ." VALUES(?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("iiii",$FK_idpostulante,$FK_idpublicacion,$FK_idusuario,$FK_idpersona);
+      $st->bind_param("iiis",$idpostulante,$idpublicacion,$idusuario,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

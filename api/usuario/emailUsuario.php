@@ -1,7 +1,7 @@
 <?php
     require_once "../bd.php";
     $mysqli = conectar();
-    $st = $mysqli->prepare("SELECT email,password FROM usuario");
+    $st = $mysqli->prepare("SELECT email,pass FROM usuario");
     $st->execute();
     $res = $st->get_result();
     $lista = array();

@@ -6,13 +6,14 @@
   $fecha = $_POST["fecha"];
   $titulo = $_POST["titulo"];
   $idusuario = $_POST["idusuario"];
-  $sql = "INSERT INTO opiniones(descripcion,aPagar,ubicacion,fecha,titulo,idusuario)"
-        ." VALUES(?,?)";
+  $rut=$_POST["rut"];
+  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,idusuario)"
+        ." VALUES(?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("sssssi",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$idusuario);
+      $st->bind_param("sssssis",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$idusuario,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

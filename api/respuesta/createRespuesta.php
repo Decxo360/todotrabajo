@@ -1,14 +1,14 @@
 <?php
   require_once "../bd.php";
-  $respuesta = $_POST["respuesta"]; // arreglos asociativo
+  $texto = $_POST["respuesta"]; // arreglos asociativo
   $idpregunta = $_POST["idpregunta"];
-  $sql = "INSERT INTO opiniones(respuesta,idpregunta)"
+  $sql = "INSERT INTO pregunta(texto,idpregunta)"
         ." VALUES(?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("si",$respuesta,$idpregunta);
+      $st->bind_param("si",$texto,$idpregunta);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

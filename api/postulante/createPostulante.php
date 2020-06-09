@@ -1,18 +1,18 @@
 <?php
   require_once "../bd.php";
+  $experiencia = $_POST["experiencia"];
   $nombre = $_POST["nombre"]; // arreglos asociativo
   $apellidoM = $_POST["apellidoM"];
   $apellidoP = $_POST["apellidoP"];
-  $experiencia = $_POST["experiencia"];
-  $idusuario = $_POST["idusuario"];
-  $idpersona = $_POST["idpersona"];
-  $sql = "INSERT INTO opiniones(nombre,apellidoM,apellidoP,experiencia,idusuario,idpersona)"
-        ." VALUES(?,?)";
+  
+  
+  $sql = "INSERT INTO postulante(experiencia,nombre,apellidoM,apellidoP)"
+        ." VALUES(?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("sssiii",$nombre,$apellidoM,$apellidoP,$experiencia,$idusuario,$idpersona);
+      $st->bind_param("ssss",$experiencia,$nombre,$apellidoM,$apellidoP);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

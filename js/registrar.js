@@ -5,24 +5,8 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let rut = document.querySelector("#rutPersona").value;
   let tarjeta = document.querySelector("#tarjetaPersona").value;
   let edad = document.querySelector("#edadPersona").value;
-  trabajoRealizado = 0;
-  postulados = 0;
-  puntos = 0;
-  trabajoSubidos=0;
+  
   if(!nombre == "" && !apellidoM == "" && !apellidoP == "" && !rut == "" && !tarjeta == "" && !edad==""){
-    let nuevaExperiencia = {};
-    nuevaExperiencia.trabajoRealizado = trabajoRealizado;
-    nuevaExperiencia.postulados = postulados;
-    nuevaExperiencia.puntos = puntos;
-    nuevaExperiencia.trabajoSubidos = trabajoSubidos
-    nuevaExperiencia.rut = rut;
-    console.log(nuevaExperiencia);
-    let fomrdata = new FormData();
-    fomrdata.append("trabajoRealizado", nuevaExperiencia.trabajoRealizado);
-    fomrdata.append("postulados", nuevaExperiencia.postulados);
-    fomrdata.append("puntos", nuevaExperiencia.puntos);
-    fomrdata.append("trabajoSubido", nuevaExperiencia.trabajoSubidos);
-    fomrdata.append("rut", nuevaExperiencia.rut);
     let nuevaPersona = {};
     nuevaPersona.nombre = nombre;
     nuevaPersona.apellidoM = apellidoM;
@@ -37,7 +21,7 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
     formData.append("rut", nuevaPersona.rut);
     formData.append("edad", nuevaPersona.edad);
     formData.append("tarjeta", nuevaPersona.tarjeta);
-    axios.post("api/experiencia/createExperencia.php", fomrdata);
+    
     axios.post("api/persona/createPersona.php", formData);
   }else {
     if(nombre ==""){
@@ -67,8 +51,11 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let contraseña = document.querySelector("#contraseñaPersona").value;
   let contraseña2 =document.querySelector("#contraseña2").value;
   let tipoUsuario = "usuario";
+  trabajoRealizado = 0;
+  postulados = 0;
+  puntos = 0;
+  trabajoSubidos=0;
   let rut = document.querySelector("#rutPersona").value;
-  axios.get("api/usuario/emailUsuario.php");
   console.log(axios.get("api/usuario/emailUsuario.php"));
   let idpersonaa;
   console.log(rut);
@@ -87,12 +74,14 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
         nuevoUsuario.contraseña = contraseña;
         nuevoUsuario.tipoUsuario = tipoUsuario;
         nuevoUsuario.rut = rut;
-      //  let formData3 = new FormData();
-      //  let nuevaId = {};
-      //  nuevaId.rut = rut;
-      //  console.log(nuevaId);
-      //  formData3.append("rut", nuevaId.rut);
-      //  let persona = {};
+       
+        
+        //  let formData3 = new FormData();
+        //  let nuevaId = {};
+        //  nuevaId.rut = rut;
+        //  console.log(nuevaId);
+        //  formData3.append("rut", nuevaId.rut);
+        //  let persona = {};
         //axios
         //  .post("api/persona/queryPersona.php", formData3)
         //  .then((response) => {
@@ -105,12 +94,48 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
         //      console.log(persona);
         //    }
         //  });
+        let idusuario;
+      
+        let fomrdata = new FormData();
+        nuevaexp={};
+        nuevaexp.correo= correo;
+        nuevaexp.contraseña= contraseña;
+        let formdata1 = new FormData();
+        formdata1.append("email",nuevaexp.correo);
+        formdata1.append("pass",nuevaexp.contraseña);
         let formData2 = new FormData();
         formData2.append("email", nuevoUsuario.correo);
-        formData2.append("password", nuevoUsuario.contraseña);
+        formData2.append("pass", nuevoUsuario.contraseña);
         formData2.append("tipousuario", nuevoUsuario.tipoUsuario);
         formData2.append("rut", nuevoUsuario.rut);
-        axios.post("api/usuario/createUsuario.php", formData2);
+        axios.post("api/usuario/createUsuario.php", formData2)
+        .then(axios.post("api/usuario/queryUsuario.php",formdata1).then(response=>{
+          let usuario = response.data;
+          console.log(axios.post("api/usuario/createUsuario.php", formData2));
+          console.log(usuario);
+        //  console.log(usuario);
+          //for (let index = 0; index < usuario.length; index++) {
+          //      console.log("si funca");
+
+          //      let nu = {};
+          //      nu = usuario[index];
+          //      idusuario = nu[0];
+          //}
+         }));
+        let nuevaExperiencia = {};
+        nuevaExperiencia.trabajoRealizado = trabajoRealizado;
+        nuevaExperiencia.postulados = postulados;
+        nuevaExperiencia.puntos = puntos;
+        nuevaExperiencia.trabajoSubidos = trabajoSubidos;
+        nuevaExperiencia.idusuario=idusuario;
+        nuevaExperiencia.rut = rut;
+        fomrdata.append("esRealizado", nuevaExperiencia.trabajoRealizado);
+        fomrdata.append("esPostulado", nuevaExperiencia.postulados);
+        fomrdata.append("puntos", nuevaExperiencia.puntos);
+        fomrdata.append("esSubido", nuevaExperiencia.trabajoSubidos);
+        fomrdata.append("idusuario",nuevaExperiencia.idusuario);
+        fomrdata.append("rut", nuevaExperiencia.rut);
+        //axios.post("api/experiencia/createExperencia.php", fomrdata);
         console.log(nuevoUsuario);
       }else{
           error = "No ha ingresado correctamente las contraseña";

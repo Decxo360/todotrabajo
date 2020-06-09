@@ -1,17 +1,17 @@
 <?php
-  require_once "../bd.php";
-  $idusuario = $_POST["idusuario"]; // arreglos asociativo
-  $idpersona = $_POST["idpersona"];
+  require_once "../bd.php"; // arreglos asociativo
   $nombre = $_POST["nombre"];
   $apellidoM = $_POST["apellidoM"];
   $apellidoP = $_POST["apellidoP"];
-  $sql = "INSERT INTO opiniones(idusario,idpersona,nombre,apellidoM,apellidoP)"
-        ." VALUES(?,?)";
+  $rut = $_POST["rut"];
+  $idusuario = $_POST["idusuario"];
+  $sql = "INSERT INTO destacado(nombre,apellidoM,apellidoP,rut,idusuario)"
+        ." VALUES(?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("iisss",$idusuario,$idpersona,$nombre,$apellidoM,$apellidoP);
+      $st->bind_param("sssis",$nombre,$apellidoM,$apellidoP,$rut,$idusuario);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

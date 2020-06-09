@@ -11,13 +11,12 @@
     $entre= false;
     while($fila = $result->fetch_row()){
         $persona = new stdClass();
-        $persona->idpersona = $fila[0];
-        $persona->nombre = $fila[1];
-        $persona->apellidoM = $fila[2];
-        $persona->apellidoP = $fila[3];
-        $persona->rut = $fila[4];
-        $persona->edad = $fila[5];
-        $persona->tarjeta = $fila[6];
+        $persona->nombre = $fila[0];
+        $persona->apellidoM = $fila[1];
+        $persona->apellidoP = $fila[2];
+        $persona->rut = $fila[3];
+        $persona->edad = $fila[4];
+        $persona->tarjeta = $fila[5];
         $lista[] = $persona;
         $entre = true;
     }

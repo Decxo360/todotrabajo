@@ -1,17 +1,18 @@
 <?php
   require_once "../bd.php";
-  $trabajoRealizado = $_POST["trabajoRealizado"]; // arreglos asociativo
-  $postulados = $_POST["postulados"];
+  $esRealizado = $_POST["esRealizado"]; // arreglos asociativo
+  $esPostulado = $_POST["esPostulado"];
   $puntos = $_POST["puntos"];
-  $trabajoSubido = $_POST["trabajoSubido"];
+  $esSubido = $_POST["esSubido"];
+  $idusuario = $_POST["idsuario"];
   $rut = $_POST["rut"];
-  $sql = "INSERT INTO experiencia(trabajoRealizado,postulados,puntos,trabajoSubido,rut)"
-        ." VALUES(?,?,?,?,?)";
+  $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubidio,idusuario,rut)"
+        ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("iisis",$trabajoRealizado,$postulados,$puntos,$trabajoSubido,$rut);
+      $st->bind_param("iisiis",$esRealizado,$esPostulado,$puntos,$esSubido,$idusuario,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;
