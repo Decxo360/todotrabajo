@@ -62,7 +62,7 @@ CREATE TABLE `experiencia` (
   `postulados` int(10) NOT NULL,
   `puntos` varchar(45) NOT NULL,
   `trabajoSubido` int(10) NOT NULL,
-  `idusuario` int(20) NOT NULL
+  `rut` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -115,7 +115,7 @@ CREATE TABLE `postulante` (
   `apellidoP` varchar(100) NOT NULL,
   `experincia` int(11) NOT NULL,
   `idusuario` int(20) NOT NULL,
-  `idpersona` int(20) NOT NULL
+  `rut` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -183,7 +183,7 @@ CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
   `password` varchar(32) NOT NULL,
   `tipousuario` varchar(15) NOT NULL,
-  `idpersona` int(20) NOT NULL
+  `rut` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
