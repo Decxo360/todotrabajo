@@ -6,13 +6,9 @@ require_once "../bd.php";
 
 $email = $_POST["email"];
 $password = $_POST["pass"];
-echo $email;
-echo $password;
 $sql = "SELECT * FROM usuario WHERE email=?&&pass=? limit 1";
 
 $mysqli = conectar();
-echo $email;
-echo $password;
 $st = $mysqli->prepare($sql);
 $st->bind_param("ss",$email, $password);
 $st->execute();

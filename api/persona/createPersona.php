@@ -6,7 +6,6 @@
   $rut = $_POST["rut"];
   $edad= $_POST["edad"];
   $tarjeta = $_POST["tarjeta"];
-  echo $nombre;
   $sql = "INSERT INTO persona(nombre,apellidoM,apellidoP,rut,edad,tarjeta)"
         ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();
@@ -17,8 +16,7 @@
       $st->execute();
       $st->close();
       $respuesta->resultado = true;
-      $respuesta->comentario = "los datos han sido ingresados exitosamente";
   } else{
       $respuesta->resultado = false;
   }
-  echo json_encode($respuesta);
+  echo json_encode($respuesta, JSON_UNESCAPED_SLASHES);
