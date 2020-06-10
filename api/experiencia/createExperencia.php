@@ -4,9 +4,15 @@
   $esPostulado = $_POST["esPostulado"];
   $puntos = $_POST["puntos"];
   $esSubido = $_POST["esSubido"];
-  $idusuario = $_POST["idsuario"];
+  $idusuario = $_POST["idusuario"];
   $rut = $_POST["rut"];
-  $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubidio,idusuario,rut)"
+  echo $esRealizado;
+  echo $esPostulado;
+  echo $puntos;
+  echo $esSubido;
+  echo $idusuario;
+  echo $rut;
+  $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubido,idusuario,rut)"
         ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();

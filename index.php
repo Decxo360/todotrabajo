@@ -51,7 +51,29 @@
       <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link text-white" href=" #"> Preguntas Frecuentes <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white" href=" #"data-toggle="modal" 
+              data-target="#preguntasFrecuentes"> 
+              Preguntas Frecuentes <span class="sr-only">(current)</span>
+            </a>
+            <div class="modal" tabindex="-1" role="dialog" id="preguntasFrecuentes">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title"> ¡Preguntas frecuentes! </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+                </div>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white"href=" #">Link</a>
@@ -59,20 +81,18 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Ayuda
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled text-white"href=" #" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
           <li class="nav-item">
-
+         
           </li>
         </ul>
       </div>

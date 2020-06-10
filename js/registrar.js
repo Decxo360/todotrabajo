@@ -30,12 +30,38 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let tipoUsuario = "usuario";
   
   if(verificarCampos()){
-    iniciarRegistro()
+    console.log("entre");
+    iniciarRegistro();
+    //$('#btnRegistrar').add({
+    //  data-dismiss="modal";
+    //});
+
   }else {
+    console.log("hay un error");
+
   }
 
 });
 function iniciarRegistro(){
+    //PERSONA
+    let nombre = document.querySelector("#nombrePersona").value;
+    let apellidoM = document.querySelector("#apellidoMPersona").value;
+    let apellidoP = document.querySelector("#apellidoPPersona").value;
+    let rut = document.querySelector("#rutPersona").value;
+    let tarjeta = document.querySelector("#tarjetaPersona").value;
+    let edad = document.querySelector("#edadPersona").value;
+  
+    //USUARIO
+    let correo = document.querySelector("#correoPersona").value;
+    let contraseña = document.querySelector("#contraseñaPersona").value;
+    let contraseña2 =document.querySelector("#contraseña2").value;
+    let tipoUsuario = "usuario";
+    //EXPERIENCIA
+    let trabajoRealizado = 0;
+    let postulados = 0;
+    let puntos = 0;
+    let trabajoSubidos=0;
+    let idusuario;
 
   //creando a la persona
   let nuevaPersona = {};
@@ -73,20 +99,19 @@ function iniciarRegistro(){
   let nuevaExperiencia = {};
   nuevaExperiencia.trabajoRealizado = trabajoRealizado;
   nuevaExperiencia.postulados = postulados;
-  nnuevaExperiencia.puntos = puntos;
+  nuevaExperiencia.puntos = puntos;
   nuevaExperiencia.trabajoSubidos = trabajoSubidos;
-  nuevaExperiencia.idusuario=idusuario;
+
   nuevaExperiencia.rut = rut;
 
   //Creando el formdata de la experiencia
-  let fomrdata = new FormData();
-  fomrdata.append("esRealizado", nuevaExperiencia.trabajoRealizado);
-  fomrdata.append("esPostulado", nuevaExperiencia.postulados);
-  fomrdata.append("puntos", nuevaExperiencia.puntos);
-  fomrdata.append("esSubido", nuevaExperiencia.trabajoSubidos);
-  fomrdata.append("idusuario",nuevaExperiencia.idusuario);
-  fomrdata.append("rut", nuevaExperiencia.rut);
-
+  let xpAjax = new FormData();
+  xpAjax.append("esRealizado", nuevaExperiencia.trabajoRealizado);
+  xpAjax.append("esPostulado", nuevaExperiencia.postulados);
+  xpAjax.append("puntos", nuevaExperiencia.puntos);
+  xpAjax.append("esSubido", nuevaExperiencia.trabajoSubidos);
+ 
+  
   //crear la query del usuario
   nuevaexp={};
   nuevaexp.correo= correo;
@@ -100,32 +125,50 @@ function iniciarRegistro(){
   createPersona(formData).then(resposne =>{
     createUser(formData2).then(resposne =>{
       createQuery(formdata1).then(response =>{
-        createExperencia(formdata1).then(response =>{
-          console.log(response.data);
+        idusuario=response.idusuario;
+        createExperencia(xpAjax,idusuario,rut,nuevaExperiencia).then(response =>{
         })
       })
     })
   })
+}
 createPersona = async(formData) => {
   const response = await axios.post("api/persona/createPersona.php", formData);
   return await response.data;
 }
 createUser = async (formData2) => {
   const response = await axios.post("api/usuario/createUsuario.php", formData2);
-  return response.data;
+  return await response.data;
   
 }
 createQuery = async (formdata1) =>{
   const response = await axios.post("api/usuario/queryUsuario.php",formdata1);
-  idusuario = response.data.id;
-  return idusuario;
+  return await response.data;
 }
-createExperencia = async(fomrdata) =>{
-  const response = await axios.post("api/experiencia/createExperencia.php", fomrdata);
-  return response.data;
+createExperencia = async(xpAjax,idusuario,rut,nuevaExperiencia) =>{
+  nuevaExperiencia.idusuario = idusuario;
+  nuevaExperiencia.rut=rut;
+  xpAjax.append("idusuario",nuevaExperiencia.idusuario);
+  xpAjax.append("rut", nuevaExperiencia.rut);
+  const response = await axios.post("api/experiencia/createExperencia.php", xpAjax);
+  return await response.data;
 }
-}
+
 function verificarCampos(){
+
+    //PERSONA
+    let nombre = document.querySelector("#nombrePersona").value;
+    let apellidoM = document.querySelector("#apellidoMPersona").value;
+    let apellidoP = document.querySelector("#apellidoPPersona").value;
+    let rut = document.querySelector("#rutPersona").value;
+    let tarjeta = document.querySelector("#tarjetaPersona").value;
+    let edad = document.querySelector("#edadPersona").value;
+  
+    //USUARIO
+    let correo = document.querySelector("#correoPersona").value;
+    let contraseña = document.querySelector("#contraseñaPersona").value;
+    let contraseña2 =document.querySelector("#contraseña2").value;
+    let tipoUsuario = "usuario";
 
   if 
   (
@@ -139,7 +182,8 @@ function verificarCampos(){
     && !rut == "" 
     && !tarjeta == "" 
     && !edad==""
-    &&(contraseña.length >= 8 && contraseña2.length >= 8)
+    &&contraseña.length >= 8 
+    && contraseña2.length >= 8
     &&(contraseña == contraseña2)
   
   ) {
@@ -172,11 +216,11 @@ function verificarCampos(){
   if (contraseña2 == "") {
       $("#invalido3").removeClass("d-none");
   }
-  if(contraseña.length < 8 ){
+  if(contraseña.length <= 7 ){
     $("#invalido2").removeClass("d-none");
     $("#invalido2").text("La contraseña tiene que ser de largo 8 o superior");
   }
-  if (contraseña2.length <8) {
+  if (contraseña2.length <= 7) { 
     $("#invalido3").removeClass("d-none");
     $("#invalido3").text("La contraseña tiene que ser de largo 8 o superior");
   }
