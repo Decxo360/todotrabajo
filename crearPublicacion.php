@@ -7,7 +7,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header modalCabeza">
-        <h5 class="modal-title" id="exampleModalLabel">Crea una nueva oportunidad de trabajo!</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¡Crea una nueva oportunidad de trabajo!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -17,22 +17,22 @@
           <div class="col-lg-6">
             <form action="" method="post">
               <div class="form-group">
-                <label class="text-dark" for="etiqueta">Ingrese la etiqueta del trabajo (*):</label>
-                <input class="form-control" type="text" name="etiqueta" value="" id="Ietiqueta" required>
+                <label class="text-dark" for="Ietiqueta">Ingrese la etiqueta del trabajo (*):</label>
+                <input class="form-control" type="text" name="Ietiqueta" value="" id="Ietiqueta">
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Esta etiqueta hará mas fácil la busqueda de este trabajo
                 </small>
               </div>
               <div class="form-group">
-                <label class="text-dark" for="Apagar"> Ingrese el monto que va a pagar (*) </label>
-                <input class="form-control" type="text" name="Apagar" value="" id="IaPagar">
+                <label class="text-dark" for="IaPagar"> Ingrese el monto que va a pagar (*) </label>
+                <input class="form-control" type="text" name="IaPagar" value="" id="IaPagar">
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Monto a pagar
                 </small>
               </div>
               <div class="form-group">
-                <label class="text-dark" for="descripcion">Descripción del trabajo (*)</label>
-                <textarea class="form-control" type="text" name="descripcion" value="" id="Idescripcion"></textarea>
+                <label class="text-dark" for="Idescripcion">Descripción del trabajo (*)</label>
+                <textarea class="form-control" type="text" name="Idescripcion" value="" id="Idescripcion"></textarea>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   De que va a tratar el trabajo
                 </small>
@@ -42,8 +42,8 @@
           <div class="col-lg-6">
             <form action="" method="post">
               <div class="form-group">
-                <label class="text-dark is-invalid" for="direccion">Ingrese la direccion del trabajo (*):</label>
-                <input class="form-control" type="email" name="direccion" value="" id="Idireccion" required>
+                <label class="text-dark is-invalid" for="Idireccion">Ingrese la direccion del trabajo (*):</label>
+                <input class="form-control" type="email" name="Idireccion" value="Idireccion" id="Idireccion">
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Dirección COMPLETA
                 </small>
@@ -70,28 +70,28 @@
               </div>
               <div class="form-row">
                  <div class="form-group col-md-3">
-                  <label for="Fecha">Fecha de</label>
+                  <label for="año">Fecha de</label>
                   <input type="text" class="form-control" id="año" >
                   <small id="passwordHelpBlock" class="form-text text-muted" >
                     Año
                   </small>
                  </div>
                  <div class="form-group col-md-3 ">
-                   <label for="">ingreso</label>
+                   <label for="mes">ingreso</label>
                   <input type="text" class="form-control" id="mes">
                   <small id="passwordHelpBlock" class="form-text text-muted" >
                     mes
                   </small>
                  </div>
                  <div class="form-group col-md-3">
-                   <label for="">del trabajo</label>
+                   <label for="dia">del trabajo</label>
                   <input type="text"class="form-control" id="dia" >
                   <small id="passwordHelpBlock" class="form-text text-muted" >
                     Día
                   </small>
                  </div>
                  <div class="form-group col-md-3 ">
-                  <label for="">(*)</label>
+                  <label for="hora">(*)</label>
                  <input type="text"class="form-control" id="hora" >
                  <small id="passwordHelpBlock" class="form-text text-muted" >
                   Hora
@@ -101,28 +101,28 @@
               </div>
               <div class="form-row">
                 <div class="form-group col-md-3">
-                 <label for="Fecha">Fecha de</label>
+                 <label for="año2">Fecha de</label>
                  <input type="text" class="form-control"id="año2" >
                  <small id="passwordHelpBlock" class="form-text text-muted">
                   Año
                 </small>
                 </div>
                 <div class="form-group col-md-3 ">
-                  <label for="">Final</label>
+                  <label for="mes2">Final</label>
                  <input type="text" class="form-control" id="mes2">
                  <small id="passwordHelpBlock" class="form-text text-muted">
                   Mes
                 </small>
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="">de la publicacion</label>
+                  <label for="dia2">de la publicacion</label>
                  <input type="text"class="form-control" id="dia2" >
                  <small id="passwordHelpBlock" class="form-text text-muted">
                   Día
                 </small>
                 </div>
                 <div class="form-group col-md-3 ">
-                 <label for="">(*)</label>
+                 <label for="hora2">(*)</label>
                 <input type="text"class="form-control" id="hora2" >
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Hora
@@ -140,6 +140,7 @@
     </div>
   </div>
 </div>
+
 <?php
 
 //require_once "../bd.php";

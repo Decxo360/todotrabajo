@@ -56,6 +56,7 @@ require_once "templates/header.php";
         
     </main>
     <link rel="stylesheet" href="css/footer.css">
+    
 <?php
 require_once "templates/footer.php";
 ?>

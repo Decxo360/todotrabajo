@@ -5,15 +5,18 @@
   $ubicacion = $_POST["ubicacion"];
   $fecha = $_POST["fecha"];
   $titulo = $_POST["titulo"];
-  $idusuario = $_POST["idusuario"];
-  $rut=$_POST["rut"];
-  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,idusuario)"
-        ." VALUES(?,?,?,?,?,?,?)";
+  $fechafinal = $_POST["fechafinal"];
+  session_start();
+  $idusuario = $_SESSION["usuario"]->idusuario ;
+  $rut= $_SESSION["usuario"]->rut;
+  echo $descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut;
+  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,fechafinal,titulo,idusuario)"
+        ." VALUES(?,?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("sssssis",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$idusuario,$rut);
+      $st->bind_param("ssssssis",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

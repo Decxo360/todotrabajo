@@ -1,14 +1,13 @@
 <?php
   require_once "../bd.php";
   $tipo = $_POST["tipo"];
-  $texto = $_POST["texto"]
-  $sql = "INSERT INTO etiqueta(tipo,texto)"
+  $sql = "INSERT INTO etiqueta(tipo)"
         ." VALUES(?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("ss",$tipo,$texto);
+      $st->bind_param("s",$tipo);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;
