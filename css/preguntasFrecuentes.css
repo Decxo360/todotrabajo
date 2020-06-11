@@ -1,0 +1,38 @@
+.cuadrado{
+    height: 100px;
+    width: 100px;
+    margin-left: 39%;
+    margin-top: 25px;
+}
+.Marco{
+    height: 234px;
+    background: rgb(206, 210, 210);
+    margin-left: 11px;
+    margin-top: 10px; 
+}
+.centrado{
+    margin-left: 94px;
+    margin-top: 4px;
+}
+.subido{
+    margin-top: 4px;
+}
+.h6{
+    color: black;
+    margin-top: 20px;
+    text-align: center;
+}
+.chiquito{
+    height: 30px;
+    width: 30px;
+}
+.letra{
+    margin-top: 10px;
+    text-align: center;
+    font-family:"Comic Sans MS";
+
+}
+.modalCabeza{
+    background-color: #0a0b31;
+    color: white;
+}

@@ -1,0 +1,71 @@
+.dflexCorreo{
+background: white;
+margin-left: 90px;
+border: 1px solid gray;
+border-radius: 10px 10px 10px 10px;
+height: 197px;
+}
+.dflexActos{
+background-color: white;
+/**display: flex;**/
+border: 1px solid aqua;
+border-radius: 10px 10px 10px 10px;
+margin-left: 74px;
+text-align: center;
+color:black;
+}
+.modal-title{
+margin-left: 55px;
+}
+.row{
+ margin-top: 10px;
+}
+.correo{
+    margin-top: 103px;
+}
+.dflexFinal{
+background: white;
+margin-left: 48px;
+border: 1px solid gray;
+border-radius: 10px 10px 10px 10px;
+height: 151px;
+width: 1052px;
+}
+.col-lg-11 > button:nth-child(2) {
+ margin-top: 89px;
+ margin-left: -241px;
+}
+
+.col-lg-11 > button:nth-child(1) {
+ margin-left: 360px;
+ width: 237px;
+}
+.redondo1{
+ border: 1px solid aqua ;
+ width: 200px;
+ height: 200px;
+ border-radius: 100px;
+ position: relative;
+ z-index: 2;
+ margin-bottom: -82px;
+ margin-left: 41% ;
+}   
+hr{
+    border: 0.5px solid steelblue;
+}
+#modalbdy{
+    background: cadetblue;
+}
+#cambiarContra {
+    width: 237px;
+}
+.cuerpo{
+    background: rgb(141,139,181);
+    background: linear-gradient(90deg, rgba(141,139,181,1) 0%, rgba(236,236,236,1) 47%, rgba(166,166,203,1) 98%); 
+}
+.btn2{
+    background-color: white;
+}
+
+   
+       

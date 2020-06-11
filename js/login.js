@@ -6,13 +6,6 @@ document.querySelector("#btnLoggear").addEventListener("click", function(){
 
     if(iniciarValidacion()){
         crearConsulta();
-        if (validarSesion()) {
-            $("#btnLoggear").addClass("d-none");
-            $("#btnRegistrar").addClass("d-none");
-        }else{
-            console.log("hay un errorsito:c");
-        }
-        
     }else{
         
     }
@@ -55,8 +48,18 @@ function crearConsulta(){
         formData.append("pass",obtenerUsuario.pass);
 
         createQuery(formData).then(response =>{
-            validarSesion(response);
+            if (!response == "ERROR no se encontro al usuario") {
+                
+                return true;
+            }else{
+                if(response == "ERROR no se encontro al usuario" ){
+                    alert("El usuario no existe, o a ocurrido un error en el sitio");
+                }
+                location.reload();
+                return false;    
+            }
             console.log(response);
+            
         })
 
 }
@@ -64,11 +67,4 @@ function crearConsulta(){
 createQuery = async(formData) => {
  const response = await axios.post("api/usuario/queryUsuario.php", formData);
  return await response.data;
-}
-function validarSesion(response){
-    if (!response == "ERROR no se encontro al usuario") {
-        return true;
-    }else{
-        return false;
-    }
 }
