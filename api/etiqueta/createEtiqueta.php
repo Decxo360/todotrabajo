@@ -2,7 +2,7 @@
   require_once "../bd.php";
   $tipo = $_POST["tipo"];
   $sql = "INSERT INTO etiqueta(tipo)"
-        ." VALUES(?,?)";
+        ." VALUES(?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){

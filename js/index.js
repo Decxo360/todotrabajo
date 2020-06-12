@@ -1,10 +1,12 @@
 document.querySelector("#crear").addEventListener("click",function(){
-    crearQuery();
+    console.log("estamos adentro");
+    createQuery();
+
     });
     
     
-    function crearQuery(){
-
+    function createQuery(){
+        console.log("estamos adentro");
         let etiqueta = document.querySelector("#Ietiqueta").value;
         let descripcion = document.querySelector("#Idescripcion").value;
         let pagar = document.querySelector("#IaPagar").value;
@@ -20,6 +22,7 @@ document.querySelector("#crear").addEventListener("click",function(){
         let dia2 = document.querySelector("#dia2").value;
         let hora2 = document.querySelector("#hora2").value;
         let fecha1;
+        console.log(document.querySelector("#NumCalle").value);
         let fecha2;
         let titulo;
         console.log(descripcion);
@@ -31,7 +34,7 @@ document.querySelector("#crear").addEventListener("click",function(){
         nuevaPublicacion.titulo = etiqueta;
         nuevaPublicacion.descripcion = descripcion;
         nuevaPublicacion.pagar = pagar;
-        nuevaPublicacion.direccion= Sector +" "+ direccion +" "+ numCalle;
+        nuevaPublicacion.direccion= direccion +" "+ Sector +" "+ numCalle;
         nuevaPublicacion.fecha1 = año +":"+mes+":"+dia+":"+hora;
         nuevaPublicacion.fecha2 = año2+":"+mes2+":"+dia2+":"+hora2;
         let formdata = new FormData();

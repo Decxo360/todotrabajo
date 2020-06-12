@@ -10,7 +10,7 @@
   $idusuario = $_SESSION["usuario"]->idusuario ;
   $rut= $_SESSION["usuario"]->rut;
   echo $descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut;
-  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,fechafinal,titulo,idusuario)"
+  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut)"
         ." VALUES(?,?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
