@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/miperfil.css">
     <link rel="stylesheet" href="css/preguntasFrecuentes.css">
+    
+    
 </head>
 <body>
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light text-white"
       style="background-color: #001a33; padding: 20px; margin-top:0px ;">
-      <a class="navbar-brand text-white" href="#">TodoTrabajo</a>
+      <a class="navbar-brand text-white" href="index.php">TodoTrabajo</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

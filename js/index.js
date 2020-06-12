@@ -48,6 +48,12 @@ document.querySelector("#crear").addEventListener("click",function(){
         crearEtiqueta(formdata1).then(response=>{
         crearQuery(formdata).then(response=>{
             console.log(response);
+            if(response==false){
+                alert("Intentalo de nuevo, algo ha pasado con el sitio :C");
+            }else{
+                alert("¡Todo ha sido ingresado con exito, gracias!");
+                location.reload();
+            }
         })
     })
     }

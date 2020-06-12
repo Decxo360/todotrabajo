@@ -1,4 +1,5 @@
 <footer >
+<link rel="stylesheet" href="css/footer.css">
         <div class="row" style="width: 1350px; background-color: rgb(48, 51, 51);">
             <div class="col-lg-4 col-md-6 col-sm-6" style="color: white;">
                 <ul>
@@ -9,10 +10,10 @@
                   </ul>
             </div>
             <div class="col-lg-8 col-md-6 col-sm-6">
-                <a class="btn" id="btn" href=""><img src="img/gmail.png" alt="" style="width: 80%; height: 80%;"></a>
-                <a class="btn" id="btn" href=""><img src="img/instagram.png" alt="" style="width: 80%; height: 80%;"></a>
-                <a class="btn" id="btn" href=""><img src="img/facebook.png" alt="" style="width: 80%; height: 80%;"></a>
-                <a class="btn" id="btn" href=""><img src="img/twitter.png" alt="" style="width: 80%; height: 80%;"></a>
+                <a class="btn" id="btn" href=""><img class="img" src="img/gmail.png" alt="" style="width: 80%; height: 80%;"></a>
+                <a class="btn" id="btn" href=""><img class="img" src="img/instagram.png" alt="" style="width: 80%; height: 80%;"></a>
+                <a class="btn" id="btn" href=""><img class="img" src="img/facebook.png" alt="" style="width: 80%; height: 80%;"></a>
+                <a class="btn" id="btn" href=""><img class="img" src="img/twitter.png" alt="" style="width: 80%; height: 80%;"></a>
             </div>
         </div>
     </footer>
@@ -28,4 +29,5 @@
     <script src="js/registrar.js"></script>
     <script src="js/login.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/trabajoFormal.js" ></script>
     

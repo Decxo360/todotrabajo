@@ -12,7 +12,7 @@ require_once "templates/header.php";
               require_once "crearPublicacion.php";
             }
             ?>
-                <button class="btn btn-ligh" style="background: #fff;" > <a href="trabajoFromal.html" style="color: black;">Trabajos informales</a> </button>
+                <button class="btn btn-ligh" style="background: #fff;" > <a href="trabajoFromal.php" style="color: black;">Trabajos informales</a> </button>
                  <button class="btn btn-ligh " style="background: #fff;">Trabajos formales</button>
             </div>
         </div>
@@ -55,7 +55,7 @@ require_once "templates/header.php";
         </div>
         
     </main>
-    <link rel="stylesheet" href="css/footer.css">
+    
     
 <?php
 require_once "templates/footer.php";
