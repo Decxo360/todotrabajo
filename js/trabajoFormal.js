@@ -1,8 +1,6 @@
 window.obtenerPublicacion = function() {
     axios.get('api/publicacion/queryPublicacion.php').then(function(response) {
-      console.log(response.data);
       window.cargarPublicaciones(response.data);
-      
     });
   };
 

@@ -94,3 +94,6 @@ require_once "api/bd.php";
            
            
            </div>
+
+
+<?php require_once "templates/footer.php";?>

@@ -60,3 +60,6 @@ require_once "templates/header.php";
 <?php
 require_once "templates/footer.php";
 ?>
+<script src="js/registrar.js"></script>
+<script src="js/login.js"></script>
+<script src="js/index.js"></script>
