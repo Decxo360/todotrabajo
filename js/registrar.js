@@ -30,15 +30,9 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   let tipoUsuario = "usuario";
   
   if(verificarCampos()){
-    console.log("entre");
     iniciarRegistro();
-    //$('#btnRegistrar').add({
-    //  data-dismiss="modal";
-    //});
 
   }else {
-    console.log("hay un error");
-
   }
 
 });
@@ -225,7 +219,7 @@ function verificarCampos(){
     $("#invalido3").text("La contraseña tiene que ser de largo 8 o superior");
   }
   if(contraseña == contraseña2){
-    error = "No ha ingresado correctamente las contraseña";
+    alert("No ha ingresado correctamente las contraseña");
   }
   return false;
   }

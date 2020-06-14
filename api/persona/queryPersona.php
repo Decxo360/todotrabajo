@@ -20,7 +20,5 @@
         $lista[] = $persona;
         $entre = true;
     }
-    echo $rut;
-    echo $entre;
     $st->close();
     echo json_encode($lista);

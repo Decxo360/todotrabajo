@@ -9,14 +9,20 @@
   session_start();
   $idusuario = $_SESSION["usuario"]->idusuario ;
   $rut= $_SESSION["usuario"]->rut;
+  $tipoPublicacion;
+  if($_SESSION["usuario"]->tipoUsuario == "usuario"){
+    $tipoPublicacion = "informal";
+  }else{
+    $tipoPublicacion = "formal";
+  }
   echo $descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut;
-  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut)"
-        ." VALUES(?,?,?,?,?,?,?,?)";
+  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut,tipoPublicacion)"
+        ." VALUES(?,?,?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("ssssssis",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut);
+      $st->bind_param("ssssssiss",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut,$tipoPublicacion);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

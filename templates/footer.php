@@ -1,6 +1,6 @@
 <footer >
 <link rel="stylesheet" href="css/footer.css">
-        <div class="row" style="width: 1350px; background-color: rgb(48, 51, 51);">
+        <div class="row" style="background-color: rgb(48, 51, 51);">
             <div class="col-lg-4 col-md-6 col-sm-6" style="color: white;">
                 <ul>
                     <li type="circle">Politicas y normas de uso</li>

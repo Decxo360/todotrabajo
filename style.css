@@ -17,7 +17,7 @@ main{
     margin-left: 0px;
     margin-right: 0px;
 }
-main > div > div > button {
+main > div > div > .button {
     margin-top: -550px;
     background: #fff;
 }

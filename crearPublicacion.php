@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-ligh btn2" data-toggle="modal" data-target="#NewPublication">
+<button type="button" class="btn btn-ligh btn2 button" data-toggle="modal" data-target="#NewPublication">
   Nueva publicacion
 </button>
 
@@ -24,6 +24,13 @@
                 </small>
               </div>
               <div class="form-group">
+                  <label class="text-dark" for="Ititulo">Ingrese el oficio (*):</label>
+                  <input class="form-control" type="text" name="Ititulo" value="" id="Ititulo">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                    Usted debe ingresar que tipo de oficio necesita ej: jardinero
+                  </small>
+                </div>
+              <div class="form-group">
                 <label class="text-dark" for="IaPagar"> Ingrese el monto que va a pagar (*) </label>
                 <input class="form-control" type="text" name="IaPagar" value="" id="IaPagar">
                 <small id="passwordHelpBlock" class="form-text text-muted">
@@ -43,7 +50,7 @@
             <form action="" method="post">
               <div class="form-group">
                 <label class="text-dark is-invalid" for="Idireccion">Ingrese la direccion del trabajo (*):</label>
-                <input class="form-control" type="email" name="Idireccion" value="Idireccion" id="Idireccion">
+                <input class="form-control" type="email" name="Idireccion" value="" id="Idireccion">
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Dirección COMPLETA
                 </small>
@@ -58,9 +65,9 @@
               <div class="form-group">
                 <label for="Sector">Comunna (*)</label>
                 <select id="Sector" class="form-control">
-                  <option selected disabled>Selecciona una comuna</option>
-                  <option>Valparaiso</option>
-                  <option>Viña</option>
+                  <option disabled>Selecciona una comuna</option>
+                  <option value="">Valparaiso</option>
+                  <option value="">Viña</option>
                   <option value="">Quilpue</option>
                   <option value="">Villa Alemana</option>
                 </select>

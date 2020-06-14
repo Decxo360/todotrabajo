@@ -10,7 +10,7 @@ background-color: white;
 /**display: flex;**/
 border: 1px solid aqua;
 border-radius: 10px 10px 10px 10px;
-margin-left: 74px;
+margin-left: 82px;
 text-align: center;
 color:black;
 }
@@ -19,6 +19,7 @@ margin-left: 55px;
 }
 .row{
  margin-top: 10px;
+ margin-right: 0px;
 }
 .correo{
     margin-top: 103px;
@@ -66,6 +67,14 @@ hr{
 .btn2{
     background-color: white;
 }
+.contenedor{
+    height: 500px;
+    border-radius: 20px 20px 20px 20px;
+    width: 1350px;
+    margin-left: 10px;
+    background: steelblue;
+    
+} 
 
    
        

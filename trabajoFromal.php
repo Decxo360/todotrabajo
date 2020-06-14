@@ -5,22 +5,25 @@
   <main class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
 
     <link rel="stylesheet" href="css/search.css">
-    <div class="flexsearch">
-      <div class="flexsearch--wrapper">
-        <form class="flexsearch--form" action="#" method="post">
-          <div class="flexsearch--input-wrapper">
-            <input class="flexsearch--input" type="search" placeholder="search">
-          </div>
-          <input class="flexsearch--submit" type="submit" value="&#10140;" />
-        </form>
-      </div>
-    </div>
+            
 
-    <div class="row" style="width: 1363px;">
+   
+
+      <div class="">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="¿Que estas buscando?">
+        <button type="submit" class="searchButton"> Buscar
+          <i class="fa fa-search"></i>
+       </button>
+      </div>
+      </div>
+
+
+    <div class="row">
       <div class="col-lg-5 col-md-6 col-sm-12 cajaScroll">
-        <div class="flex-container1">
+        <div class="flex-container1 shadow-lg bg-white rounded">
           <div class="imagen">
-            <img class="cuadrada" src="img/user.png" alt="">
+            <img class="cuadrada " src="img/user.png" alt="">
           </div>
           <div class="cuerpa">
             <br>
@@ -73,8 +76,24 @@
               Postular Ahora
             </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           
+
+          </div>
+
+        </div>
+        <div style="color: black;" class="descripciontrabajo">
+          <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur voluptates amet illum accusamus
+            tempora vel incidunt quod, in repudiandae dolores atque vitae accusantium facilis enim quia quam corrupti
+            inventore ratione.
+          </h5>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -94,21 +113,6 @@
                 </div>
               </div>
             </div>
-
-          </div>
-
-        </div>
-        <div style="color: black;" class="descripciontrabajo">
-          <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur voluptates amet illum accusamus
-            tempora vel incidunt quod, in repudiandae dolores atque vitae accusantium facilis enim quia quam corrupti
-            inventore ratione.
-          </h5>
-
-        </div>
-
-      </div>
-    </div>
-    </div>
   </main>
 <?php 
 require_once "templates/footer.php"

@@ -41,14 +41,14 @@
                   </div>
                   <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-5 Marco centrado">
+                        <div class="col-lg-5 Marco centrado shadow p-3 mb-5  rounded">
                             <img class="cuadrado" src="img/global.png" alt="">
                             <h6 class="h6"><img class="chiquito" src="img/clip.png" alt="">   
                                  Como verga hago muchas cosas de mi vida</h6>
                                  <h6 class="h6 letra">Nose, pero algo saldrá por el camino bro</h6>
                            
                         </div>
-                        <div class="col-lg-5 Marco subido">
+                        <div class="col-lg-5 Marco subido shadow p-3 mb-5  rounded">
                             <img class="cuadrado" src="img/cv.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">    
                                 Como verga hago muchas cosas de mi vida</h6>
@@ -56,14 +56,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 Marco centrado">
+                        <div class="col-lg-5 Marco centrado shadow p-3 mb-5 rounded">
                             <img class="cuadrado"  src="img/workk.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">  
                                 Como verga hago muchas cosas de mi vida</h6>
                             <h6 class="h6 letra">Nose, pero algo saldrá por el camino bro</h6>
                       
                         </div>
-                        <div class="col-lg-5 Marco subido">
+                        <div class="col-lg-5 Marco subido shadow p-3 mb-5 rounded">
                             <img class="cuadrado" src="img/user.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">     
                                 Como verga hago muchas cosas de mi vida</h6>
@@ -105,113 +105,9 @@
             Registrarse
                      </button>';
         }else{
-           
-            require_once "api/bd.php";
-            $rut =$_SESSION["usuario"]->rut;
-            $sql = "SELECT * FROM experiencia 
-            WHERE rut=?";
-            $bd = conectar();
-            if( $st = $bd->prepare($sql) ){
-                 $st->bind_param("s", $rut);
-                 $st->execute();
-                 $result = $st->get_result();
-                $lista = array();
-                $entre= false;
-                while($fila = $result->fetch_row()){
-                    $experiencia = new stdClass();
-                    $experiencia->idexperiencia = $fila[0];
-                    $experiencia->esRealizado= $fila[1];
-                    $experiencia->esPostulado = $fila[2];
-                    $experiencia->puntos= $fila[3];
-                    $experiencia->esSubido= $fila[4];
-                    $experiencia->idusuario = $fila[5];
-                    $experiencia->rut = $fila[6];
-                    $lista[] = $experiencia;
-                    $entre = true;
-                }
-                $st->close();
-            }   
-            $sql = "SELECT * FROM persona 
-            WHERE(rut=?)";
-            $bd = conectar();
-            if( $st = $bd->prepare($sql) ){
-                $st->bind_param("s", $rut);
-                $st->execute();
-                $result = $st->get_result();
-               $lista = array();
-               $entre= false;
-               while($fila = $result->fetch_row()){
-                $persona = new stdClass();
-                $persona->nombre = $fila[0];
-                $persona->apellidoM = $fila[1];
-                $persona->apellidoP = $fila[2];
-                $persona->rut = $fila[3];
-                $persona->edad = $fila[4];
-                $persona->tarjeta = $fila[5];
-                $lista[] = $persona;
-                $entre = true;
-               }
-               $st->close();
-           }   
-
-               
-            echo '
-         
-            <button type="button" class="btn btn-outline-dark text-white" data-toggle="modal" data-target="#exampleModal" id="VerMiPerfil">
-            Ver mi perfil
-          </button>
-          
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header" style="background-color: rgb(2, 14, 51);">
-                  <h1 class="modal-title text-white" id="exampleModalLabel">Mi Perfil</h1>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body" id="modalbdy">
-                  <img class="redondo1" src="img/putopng.jpg" alt="">
-                  <div class="row">
-                      <div class="col-lg-10 dflexCorreo">
-                          <h6 class="correo" style="text-align: center; color: black;">',$persona->nombre,' ',$persona->apellidoP,' ',$persona->apellidoM,'</h6>
-                          <h6 style="text-align: center; color: black;">',$_SESSION["usuario"]->email,'</h6>
-                      </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-2 dflexActos">
-                        <h6 class="text-align-center">Trabajos realizados</h6>
-                        <hr>
-                        <h6 class="text-align-center" >',$experiencia->esRealizado,'</h6>
-                    </div>
-                    <div class="col-lg-2 dflexActos">
-                        <h6 class="text-align-center">Trabajos Postulados</h6>
-                        <hr>
-                        <h6 class="text-align-center" >',$experiencia->esPostulado,'</h6>
-                    </div>
-                    <div class="col-lg-2 dflexActos">
-                        <h6 class="text-align-center">Puntos acumulados</h6>
-                        <hr>
-                        <h6 class="text-align-center" >',$experiencia->puntos,'</h6>
-                    </div>
-                    <div class="col-lg-2 dflexActos" >
-                        <h6 class="">Trabajos subidos </h6>
-                        <hr>
-                        <h6 class="">',$experiencia->esSubido,'</h6>
-                    </div>
-                  </div>
-                  <div class="row"></div>
-                      <div class="col-lg-11 dflexFinal">
-                          <button type="button" class="btn btn-primary">Cambiar mi correo</button>
-                          <button type="button"  class="btn btn-primary" id="cambiarContra">Cambiar mi contraseña </button>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>';
-            
+            echo'
+     
+            <a type="button" class="btn btn-outline-dark text-white" href="miperfil.php" > Mi perfil </a>';
             echo '<a class="btn btn-outline-dark text-white" href="cerrarsesion.php" > Cerrar Sesión </a> ';
         }
         ?>
