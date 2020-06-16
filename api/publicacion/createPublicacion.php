@@ -15,14 +15,14 @@
   }else{
     $tipoPublicacion = "formal";
   }
-  echo $descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut;
-  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut,tipoPublicacion)"
-        ." VALUES(?,?,?,?,?,?,?,?,?)";
+  $etiqueta=$_POST["etiqueta"];
+  $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut,tipoPublicacion,etiqueta)"
+        ." VALUES(?,?,?,?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("ssssssiss",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut,$tipoPublicacion);
+      $st->bind_param("ssssssisss",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$fechafinal,$idusuario,$rut,$tipoPublicacion,$etiqueta);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;

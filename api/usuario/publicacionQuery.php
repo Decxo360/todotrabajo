@@ -1,7 +1,9 @@
 <?php
+    session_start();
     require_once "../bd.php";
+    $rut = $_SESSION["usuario"]->rut;
     $mysqli = conectar();
-    $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (tipoPublicacion='formal')");
+    $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (rut='$rut')");
     $st->execute();
     $result = $st->get_result();
     $lista = array();

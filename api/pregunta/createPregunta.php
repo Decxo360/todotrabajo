@@ -1,9 +1,11 @@
 <?php
   require_once "../bd.php";
+  session_start();
   $texto = $_POST["texto"]; // arreglos asociativo
   $idpublicacion = $_POST["idpublicacion"];
-  $idusuario = $_POST["idusuario"];
-  $rut = $_POST["rut"];
+  $idusuario = $_SESSION["usuario"]->idusuario;
+  $rut = $_SESSION["usuario"]->rut;
+  echo $texto,$idpublicacion;
   $sql = "INSERT INTO pregunta(texto,idpublicacion,idusuario,rut)"
         ." VALUES(?,?,?,?)";
   $mysqli = conectar();

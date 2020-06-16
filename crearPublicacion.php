@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-ligh btn2 button" data-toggle="modal" data-target="#NewPublication">
+<button type="button" class="btn btn-ligh btn2 button" data-toggle="modal" data-target="#NewPublication" id="publicacion">
   Nueva publicacion
 </button>
 
@@ -32,9 +32,9 @@
                 </div>
               <div class="form-group">
                 <label class="text-dark" for="IaPagar"> Ingrese el monto que va a pagar (*) </label>
-                <input class="form-control" type="text" name="IaPagar" value="" id="IaPagar">
+                <input class="form-control" type="number" name="IaPagar" value="" id="IaPagar">
                 <small id="passwordHelpBlock" class="form-text text-muted">
-                  Monto a pagar
+                  Monto a pagar ej:100.000
                 </small>
               </div>
               <div class="form-group">
@@ -43,7 +43,14 @@
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   De que va a tratar el trabajo
                 </small>
-              </div>              
+              </div>     
+              <div class="form-group">
+                <label class="text-dark" for="Ipregunta">Cree una pregunta para el postulante (*)</label>
+                <input class="form-control" type="text" name="Ipregunta" value="" id="Ipregunta">
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                  Ingrese lo que necesita saber de la persona que escogera. Ej: ¿Cuantos años lleva en el rubro?
+                </small>
+              </div>            
             </form>
           </div>
           <div class="col-lg-6">
@@ -65,11 +72,11 @@
               <div class="form-group">
                 <label for="Sector">Comunna (*)</label>
                 <select id="Sector" class="form-control">
-                  <option disabled>Selecciona una comuna</option>
-                  <option value="">Valparaiso</option>
-                  <option value="">Viña</option>
-                  <option value="">Quilpue</option>
-                  <option value="">Villa Alemana</option>
+                  <option>Selecciona una comuna</option>
+                  <option >Valparaiso</option>
+                  <option >Viña</option>
+                  <option >Quilpue</option>
+                  <option >Villa Alemana</option>
                 </select>
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Seleccione una comuna 

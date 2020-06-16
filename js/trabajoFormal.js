@@ -1,146 +1,99 @@
 window.obtenerPublicacion = function() {
-    axios.get('api/publicacion/queryPublicacion.php').then(function(response) {
+  $("#publicacion").removeClass("btn-ligh","button", "btn2");
+  $("#publicacion").removeClass("button");
+  $("#publicacion").removeClass("btn2");
+  $("#publicacion").css("margin-top","20px");
+  $("publicacion").css("margin-bottom","20px");
+  $("#publicacion").addClass("btn-primary");
+  $("#publicacion").addClass("btn-lg btn-block");
+  axios.get('api/publicacion/queryPublicacion.php').then(function(response) {
       window.cargarPublicaciones(response.data);
-    });
-  };
+  });
+};
 
 
+window.cargarPublicaciones = function(publicaciones){
+cuerpo = document.querySelector("#mispublicaciones");
+for (let i = 0; i < publicaciones.length; i++) {
+    
+  //Creación de elementos html
 
-  window.cargarPublicaciones = function(publicaciones){
+  let divSombra = document.createElement("div");
+  let div = document.createElement("div");
+  let divcollapse = document.createElement("div");
+  let h6Hashtag = document.createElement("h6");
+  let h6 = document.createElement("h6");
+  let h6Nombre = document.createElement("h6");
+  let h6descripcion = document.createElement("h6");
+  let h1Titulo = document.createElement("h1");
+  let inputColapse = document.createElement("input");
+  let imgPersona = document.createElement("img");
+  
+  //Darle los valores de la publicacion actual
 
-    let cuerpo = document.querySelector(".cajaScroll");
-    for (let i = 0; i < publicaciones.length; i++){
-        //Cuerpo de la publicacion
-        
-        let divContainer= document.createElement("div");
-        let divImangen= document.createElement("div");
-        let divCuerpo= document.createElement("div");
-        let img = document.createElement("img");
-        let br = document.createElement("br");
-        let h4Titulo= document.createElement("h4");
-        let hrgordo = document.createElement("hr");
-        let h4Trabajo = document.createElement("h4");
-        let h6Empresa = document.createElement("h6");
-        let h6fecha = document.createElement("h6");
-
-        //Agregarle las clases a los elementos creados anteriormente
-        divContainer.classList.add("flex-container1");
-        divImangen.classList.add("imagen");
-        divCuerpo.classList.add("cuerpa");
-        img.classList.add("cuadrada");
-        img.setAttribute("src", "img/user.png");
-        h4Titulo.classList.add("titulo");
-        hrgordo.classList.add("hrgordo");
-        h4Trabajo.classList.add("trabajo");
-        h6Empresa.classList.add("empresa");
-        h6fecha.classList.add("fecha");
+  let publicacionActual = publicaciones[i];
 
 
-        //Obtengo los datos de la bd
-        let publicacionActual = publicaciones[i];
-        h4Titulo.innerText = publicacionActual.titulo;
-        h4Trabajo.innerText = publicacionActual.titulo;
-        h6fecha.innerText ="Publicado el: "+publicacionActual.fecha;
-        divContainer.setAttribute("id",publicacionActual.idpublicacion);
-        let formData = new this.FormData();
-        let personaAjax = {};
-        let rut;
-        personaAjax.rut = publicacionActual.rut;
-        formData.append("rut", personaAjax.rut);
-        cargarPersona(formData).then(response=>{
-        for (let i = 0; i < response.length; i++) {
-          personaActual=response[i];
-          h6Empresa.innerText = personaActual.nombre +" "+ personaActual.apellidoP +" "+ personaActual.apellidoM;
-        }
-        
-        })  
+  //Pasarle las clases a los elementos
 
-        divContainer.appendChild(divImangen);
-        divContainer.appendChild(divCuerpo);
-        divImangen.appendChild(img);
-        divCuerpo.appendChild(br);
-        divCuerpo.appendChild(h4Titulo);
-        divCuerpo.appendChild(hrgordo);
-        divCuerpo.appendChild(h4Trabajo);
-        divCuerpo.appendChild(h6Empresa);
-        divCuerpo.appendChild(h6fecha);
-        cuerpo.appendChild(divContainer);
+  divSombra.classList.add("shadow-lg","p3","bg-white","rounded");
+  imgPersona.classList.add("fotoPersona");
+  h6Nombre.classList.add("nombrePersona");
+  h6Hashtag.classList.add("hashtag");
+  h1Titulo.classList.add("titulo");
+  divcollapse.classList.add("collapse");
+  inputColapse.classList.add("down");
 
-        document.getElementById(publicacionActual.idpublicacion).addEventListener("click",function(){
-          
-          //Eliminar contenido anterior al que vamos a crear
-          $(".cabeceraDescripcion").remove();
-          $(".descripcion > div").remove();
-          $(".descripciontrabajo").remove();
-        
+  //Pasarle atributos a los elementos
 
-          //crear la estructura de la descripción
+  imgPersona.setAttribute("src", "img/putopng.jpg");
+  inputColapse.setAttribute("type","image");
+  inputColapse.setAttribute("src","img/down.png");
+  inputColapse.setAttribute("data-toggle","collapse");
+  inputColapse.setAttribute("data-target","#demo"+publicacionActual.idpublicacion);
+  divcollapse.setAttribute("id","demo"+publicacionActual.idpublicacion);
 
-          let descripcion = document.querySelector(".descripcion");
-          let divCabecera = document.createElement("div");
-          let br1 = document.createElement("br");
-          let h1 = document.createElement("h1");
-          let br = document.createElement("br");
-          let div = document.createElement("div");
-          let divPostular = document.createElement("div");
-          let h6 = document.createElement("h6")
-          let h6centrado = document.createElement("h6");
-          let h6fecha = document.createElement("h6");
-          let h6fechaf = document.createElement("h6");
-          let buttonModal = document.createElement("button");
-          let divDescripcion = document.createElement("div");
-          let h5 = document.createElement("h5");
-          let hr1 = document.createElement("hr");
-      
-          //Agregarle las clases a los elementos html
+ // Darle los value a los elementos html
 
-          h6fechaf.classList.add("derecha");
-          divCabecera.classList.add("cabeceraDescripcion");
-          divPostular.classList.add("postular");
-          buttonModal.classList.add("btn","btn-primary","float-right");
-          buttonModal.setAttribute("type","button");
-          buttonModal.setAttribute("data-toggle","modal");
-          buttonModal.setAttribute("data-target","#exampleModal");
-          divDescripcion.classList.add("descripciontrabajo");
-          h6centrado.classList.add("centro");
-
-          //Obtener los datos desde la base de datos
-          buttonModal.innerText = "¡Postula!";
-          h1.innerText = publicacionActual.titulo;
-          h5.innerText= publicacionActual.publicacion;
-          h6fecha.innerText = "Publicado el :" + publicacionActual.fecha;
-          h6fechaf.innerText = "Termina en :"+ publicacionActual.fechafinal;
-          h6centrado.innerText = "Dirección:"+ publicacionActual.ubicacion;
-          personaAjax.rut = publicacionActual.rut;
-          formData.append("rut", personaAjax.rut);
-          cargarPersona(formData).then(response=>{
-          for (let i = 0; i < response.length; i++) {
-            personaActual=response[i];
-            h6.innerText = personaActual.nombre +" "+ personaActual.apellidoP +" "+ personaActual.apellidoM;
-          }
-          })
-
-          divCabecera.appendChild(br);
-          divCabecera.appendChild(h1);
-          divCabecera.appendChild(br);
-          div.appendChild(divPostular);
-          divPostular.appendChild(h6);
-          divPostular.appendChild(buttonModal);
-          divDescripcion.appendChild(hr1);
-          divDescripcion.appendChild(h5);
-          divDescripcion.appendChild(hr1);
-          divDescripcion.appendChild(h6fecha);
-          divDescripcion.appendChild(h6centrado);
-          divDescripcion.appendChild(h6fechaf);
-          descripcion.appendChild(divCabecera);
-          descripcion.appendChild(div);
-          descripcion.appendChild(divDescripcion);
-
-        });
-    }
-  };
-  cargarPersona = async(formData) =>{
-      const response = await axios.post("api/persona/queryPersona.php", formData);
-      return await response.data;
+ h6.innerText = "#"+publicacionActual.etiqueta;
+ h1Titulo.innerText=publicacionActual.titulo;
+ h6.innerText="Publicado: "+publicacionActual.fecha;
+ h6descripcion.innerText= publicacionActual.descripcion;
+ h6Hashtag.innerHTML = publicacionActual.etiqueta;
+ let formData = new this.FormData();
+ let personaAjax = {};
+ personaAjax.rut = publicacionActual.rut;
+ formData.append("rut", personaAjax.rut);
+ cargarPersona(formData).then(response=>{
+  for (let i = 0; i < response.length; i++) {
+    let personaActual=response[i];
+    h6Nombre.innerText = personaActual.nombre +" "+ personaActual.apellidoP +" "+ personaActual.apellidoM;
   }
-  window.obtenerPublicacion()
+
+  divSombra.appendChild(div);
+  divSombra.appendChild(h6Hashtag);
+  divSombra.appendChild(h1Titulo);
+  divSombra.appendChild(h6);
+  divSombra.appendChild(inputColapse);
+  divSombra.appendChild(divcollapse);
+  div.appendChild(imgPersona);
+  div.appendChild(h6Nombre);
+  divcollapse.appendChild(h6descripcion);
+  cuerpo.appendChild(divSombra);
+  
+
+
+  }) 
+}
+
+
+}
+
+cargarPersona = async(formData) =>{
+  const response = await axios.post("api/persona/queryPersona.php", formData);
+  return await response.data;
+}
+
+
+
+window.obtenerPublicacion();

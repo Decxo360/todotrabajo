@@ -19,79 +19,10 @@
       </div>
 
 
-    <div class="row">
-      <div class="col-lg-5 col-md-6 col-sm-12 cajaScroll">
-        <div class="flex-container1 shadow-lg bg-white rounded">
-          <div class="imagen">
-            <img class="cuadrada " src="img/user.png" alt="">
-          </div>
-          <div class="cuerpa">
-            <br>
-            <h4 class="titulo">Titulo</h4>
-            <hr class="hrgordo">
-            <h4 class="trabajo">Trabajo</h4>
-            <h6 class="empresa">-persona</h6>
-            <h6 class="fecha">fecha</h6>
-          </div>
-        </div>
-        <div class="flex-container1">
-          <div class="imagen">
-            <img class="cuadrada" src="img/user.png" alt="">
-          </div>
-
-          <div class="cuerpa">
-            <br>
-            <h4 class="titulo">Titulo</h4>
-            <hr class="hrgordo">
-            <h4 class="trabajo">Trabajo</h4>
-            <h6 class="empresa">-persona</h6>
-            <h6 class="fecha">fecha</h6>
-          </div>
-        </div>
-        <div class="flex-container1">
-          <div class="imagen">
-            <img class="cuadrada" src="img/user.png" alt="">
-          </div>
-          <div class="cuerpa">
-            <br>
-            <h4 class="titulo">Titulo </h4>
-            <hr class="hrgordo">
-            <h5 class="trabajo">Trabajo</h5>
-            <h6 class="empresa">-persona</h6>
-            <h6 class="fecha">fecha</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7 col-md-6 col-sm-12 descripcion">
-        <div class="cabeceraDescripcion">
-          <br>
-          <h1>Aquí va el título de la página</h1>
-          <br>
-        </div>
-        <div>
-          <div class="postular">
-            <h6>Empresa/Persona</h6>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Postular Ahora
-            </button>
-
-           
-
-          </div>
-
-        </div>
-        <div style="color: black;" class="descripciontrabajo">
-          <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur voluptates amet illum accusamus
-            tempora vel incidunt quod, in repudiandae dolores atque vitae accusantium facilis enim quia quam corrupti
-            inventore ratione.
-          </h5>
-
-        </div>
-
-      </div>
-    </div>
-    </div>
+      <div class="col-lg-12" id="mispublicaciones"> 
+            <?php require_once "crearPublicacion.php";?>
+            <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Trabajos Formales ingresados en nuestra plataforma</h1>
+           </div>
      <!-- Modal -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">

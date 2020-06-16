@@ -70,11 +70,45 @@ hr{
 .contenedor{
     height: 500px;
     border-radius: 20px 20px 20px 20px;
-    width: 1350px;
-    margin-left: 10px;
+    margin-top:10px;
     background: steelblue;
     
 } 
+.hashtag{
+    text-align: center; 
+    margin-top: -26px;
+}
+.nombrePersona{
+    margin-left: 70px; 
+    margin-top: -35px;
+}
+.fotoPersona{
+    width: 50px; height: 50px; 
+    margin-top: 0px; 
+    border-radius: 30px 30px 30px 30px; 
+    border: 1px solid black
+}
+.down{
+    background: transparent; 
+    height: 30px; 
+    width: 30px;
+    float: right; 
+    margin-top: -127px;
+    margin-right: 5px;
+}
+.collapse{
+    background: whitesmoke;
+}
+.tituloPublicacion{
+    text-align: center;
+}
+.config{
+    height: 50px;
+    float: right;
+    width: 50px;
+    margin-top: 5px;
+}
+
 
    
        

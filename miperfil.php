@@ -54,6 +54,7 @@ require_once "api/bd.php";
            <img class="redondo1" src="img/putopng.jpg" alt="">
            <div class="row">
                <div class="col-lg-10 dflexCorreo">
+               <input type="image" src="img/tuerca.png" name="" id="" class="config" >
                    <h6 class="correo" style="text-align: center; color: black;">',$persona->nombre,' ',$persona->apellidoP,' ',$persona->apellidoM,'</h6>
                    <h6 style="text-align: center; color: black;">',$_SESSION["usuario"]->email,'</h6>
                </div>
@@ -89,11 +90,34 @@ require_once "api/bd.php";
            </div>
            ';
            ?>
+           <link rel="stylesheet" href="css/trabajoFormal.css">
 
-           <div id="mispublicaciones"> 
-           
-           
+           <div class="col-lg-12" id="mispublicaciones"> 
+            <?php require_once "crearPublicacion.php";?>
+            <h1 style="text-align: center;">Mis publicaciones</h1>
            </div>
 
 
+
+
+
+           <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+             <div class="modal-content">
+              <div class="modal-body" id="modalbdy1">
+                <h1 style="text-align: center;">Responda las preguntas</h1>
+                 <form action="" method="post">
+                  <div class="form-group">
+                   <label class="form-action" for="">Responda las preguntas</label>
+                     <input class="form-action" type="text">
+                  </div>
+                 </form>
+
+              </div>
+             </div>
+            </div>
+        </div>
+
+
 <?php require_once "templates/footer.php";?>
+<script src="js/perfil.js" ></script>
