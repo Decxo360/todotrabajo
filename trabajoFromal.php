@@ -44,6 +44,16 @@
                 </div>
               </div>
             </div>
+                 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+             <div class="modal-content">
+             <h1 style="text-align: center;">Responda las preguntas</h1>
+              <div class="modal-body" id="modalbdy1">
+              </div>
+             </div>
+            </div>
+        </div>
+
   </main>
 <?php 
 require_once "templates/footer.php"

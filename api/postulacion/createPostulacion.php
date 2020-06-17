@@ -4,6 +4,7 @@
   $idpublicacion = $_POST["idpublicacion"];
   $idusuario = $_POST["idusuario"];
   $rut = $_POST["rut"];
+  echo $idpostulante,$idpublicacion,$idusuario,$rut;
   $sql = "INSERT INTO postulacion(idpostulante,idpublicacion,idusuario,rut)"
         ." VALUES(?,?,?,?)";
   $mysqli = conectar();

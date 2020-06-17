@@ -104,15 +104,8 @@ require_once "api/bd.php";
            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
              <div class="modal-content">
+             <h1 style="text-align: center;">Responda las preguntas</h1>
               <div class="modal-body" id="modalbdy1">
-                <h1 style="text-align: center;">Responda las preguntas</h1>
-                 <form action="" method="post">
-                  <div class="form-group">
-                   <label class="form-action" for="">Responda las preguntas</label>
-                     <input class="form-action" type="text">
-                  </div>
-                 </form>
-
               </div>
              </div>
             </div>

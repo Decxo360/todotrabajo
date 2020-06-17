@@ -2,8 +2,10 @@
   require_once "../bd.php";
   $texto = $_POST["respuesta"]; // arreglos asociativo
   $idpregunta = $_POST["idpregunta"];
-  $sql = "INSERT INTO pregunta(texto,idpregunta)"
-        ." VALUES(?,?)";
+  echo $texto;
+  echo $idpregunta;
+  $sql = "INSERT INTO respuesta(texto,idpregunta)"
+        ."VALUES( ? , ? )";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
