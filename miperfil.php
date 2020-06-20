@@ -54,7 +54,28 @@ require_once "api/bd.php";
            <img class="redondo1" src="img/putopng.jpg" alt="">
            <div class="row">
                <div class="col-lg-10 dflexCorreo">
-               <input type="image" src="img/tuerca.png" name="" id="" class="config" >
+               <input type="image" src="img/tuerca.png" name="" id="" class="config"  data-toggle="collapse" data-target="#demo1">
+               <div id="demo1" class="collapse option">
+                 <h1 style="text-align: center;" >Opciones</h1>
+                  <hr style="color: black; height:0px; margin-top:-11px; width: 167px;">
+                 <div type="button" id="Postulantes">
+                    <hr>
+                    <h6 style="text-align: center;">Ver Postulantes de mis trabajos</h6>
+                    <hr>
+                  </div>
+                  <div type="button" id="seleccionado">
+                    <h6 style="text-align: center;">Ver los trabajos a los que he sido seleccionado</h6>
+                    <hr>
+                  </div>
+                  <div type="button">
+                    <h6 style="text-align: center;">Cambiar password</h6>
+                    <hr>
+                  </div>
+                  <div type="button">
+                    <h6 style="text-align: center;">Cambiar correo</h6>
+                    <hr>
+                  </div>
+                </div>
                    <h6 class="correo" style="text-align: center; color: black;">',$persona->nombre,' ',$persona->apellidoP,' ',$persona->apellidoM,'</h6>
                    <h6 style="text-align: center; color: black;">',$_SESSION["usuario"]->email,'</h6>
                </div>
@@ -93,6 +114,11 @@ require_once "api/bd.php";
            <link rel="stylesheet" href="css/trabajoFormal.css">
 
            <div class="col-lg-12" id="mispublicaciones"> 
+            <div id="postulantes" class="d-none">
+              <h1 style="text-align:center;">Mis postulantes</h1>
+            </div>
+            <div class="d-none" id="seleccionados">
+            </div>
             <?php require_once "crearPublicacion.php";?>
             <h1 style="text-align: center;">Mis publicaciones</h1>
            </div>

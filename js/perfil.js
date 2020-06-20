@@ -191,12 +191,10 @@ window.obtenerPublicacion = function() {
                     postulacionAjax.append("idpublicacion",postulacion.idp);
                     postulacionAjax.append("idusuario",postulacion.idu);
                     postulacionAjax.append("rut",postulacion.ru);
-    
                     crearPostulacion(postulacionAjax).then(response=>{
                       alert("Felicidades, ha postulado con exito");
                       location.reload();
                     })
-    
                     })
                   })
                 })
@@ -204,22 +202,186 @@ window.obtenerPublicacion = function() {
             }else{
               return false;
             }
-            
           })
-      
         })
-    
-        
-    
       });
-      
-    
       }) 
     }
-    
-    
     }
     
+    document.getElementById("Postulantes").addEventListener("click",function () {
+
+      let div1 = document.getElementById("postulantes");
+      $("#postulantes").empty();
+      div1.classList.remove("d-none");
+      let h1Lele = document.createElement("h1");
+      h1Lele.innerText= "Mis postulantes";
+      $(h1Lele).css("text-align","center");
+      div1.appendChild(h1Lele);
+      cargarPostulacion().then(response=>{
+        for (let i = 0; i< response.length; i++) {
+
+          let postulanteActual = response[i];
+
+          let divSombra = document.createElement("div");
+          let div = document.createElement("div");
+          let divcollapse = document.createElement("div");
+          let h6Nombre = document.createElement("h6");
+          let h1Titulo = document.createElement("h1");
+          let inputColapse = document.createElement("input");
+          let imgPersona = document.createElement("img");
+          let h6 = document.createElement("h6");
+          let buttonSelecionado = document.createElement("button");
+
+          divSombra.classList.add("shadow-lg","p3","bg-white","rounded");
+          h6Nombre.classList.add("nombrePersona");
+          h1Titulo.classList.add("titulo");
+          divcollapse.classList.add("collapse");
+          inputColapse.classList.add("down2");
+          buttonSelecionado.classList.add("btn","btn-primary","seleccionado");
+
+          imgPersona.setAttribute("src", "img/putopng.jpg");
+          inputColapse.setAttribute("type","image");
+          inputColapse.setAttribute("src","img/down.png");
+          inputColapse.setAttribute("data-toggle","collapse");
+          buttonSelecionado.setAttribute("type","button");
+          buttonSelecionado.setAttribute("id","seleccionado"+postulanteActual.idpublicacion);
+          
+
+
+          buttonSelecionado.innerText= "Seleccionar persona para este trabajo";
+          let publicacion = postulanteActual.idpostulante;
+          let postulanteAjax = new FormData();
+          postulanteAjax.append("idpostulante", publicacion);
+          let publiAjax = new FormData();
+          publiAjax.append("idpublicacion",postulanteActual.idpublicacion);
+          traemeLaPubli(publiAjax).then(response=>{
+            for (let i = 0; i < response.length; i++) {
+              let publiactual = response[i];
+              let tituloPostulacion = publiactual.titulo;
+              h1Titulo.innerText = tituloPostulacion;
+              divcollapse.setAttribute("id","postulante"+publiactual.idpublicacion);
+              inputColapse.setAttribute("data-target","#postulante"+publiactual.idpublicacion);
+
+              
+            }
+
+          })
+          traemeLpostulante(postulanteAjax).then(response=>{
+            for (let i = 0; i < response.length; i++) {
+              let postulante = response[i];
+              let nombrePostulante = postulante.nombre + " " + postulante.apellidoP +" "+ postulante.apellidoM;
+              h6.innerText = nombrePostulante;
+              h6.style.height ="50px";
+              h6.style.paddingTop ="14px";
+            }
+            
+          })
+
+
+      
+      
+      divSombra.appendChild(div);
+      divSombra.appendChild(h1Titulo);
+      divSombra.appendChild(inputColapse);
+      divSombra.appendChild(divcollapse);
+      divcollapse.appendChild(div);
+      divcollapse.appendChild(buttonSelecionado);
+      div.appendChild(h6);
+      div1.appendChild(divSombra);
+      
+
+      document.getElementById("seleccionado"+postulanteActual.idpublicacion).addEventListener("click",function(){
+
+        let botonsql = document.getElementById("seleccionado"+postulanteActual.idpublicacion);
+        console.log(postulanteActual);
+        let formdata = new FormData();
+        let numEnviado = 0;
+        let esEnviado = "no";
+        formdata.append("esEnviado",esEnviado );
+        formdata.append("numEnviado", numEnviado);
+        formdata.append("idpostulante",postulanteActual.idpostulante);
+        formdata.append("idpublicacion",postulanteActual.idpublicacion);
+        formdata.append("idusuario",postulanteActual.idusuario);
+        formdata.append("rut",postulanteActual.rut);
+        crearSeleccionado(formdata).then(response=>{
+          console.log(response);
+          alert("Felicidades, ha seleccionado a una persona para su trabajo!");
+        })
+
+      })
+
+
+        }
+      })
+    })
+
+
+    document.getElementById("seleccionado").addEventListener("click", function(){
+      let div = document.getElementById("seleccionado");
+      consultarPostulante().then(response=>{
+          for (let i = 0; i < response.length; i++) {
+            let seleccionadoActual = response[i];
+            let consultaSeleccionado = new FormData();
+            consultaSeleccionado.append("idpostulante", seleccionadoActual.idpostulante);
+            consultaSelec(consultaSeleccionado).then(response=>{
+              if (response == null) {
+                alert("No has sido seleccionado para ningun trabajo, suerte!");
+                location.reload();
+              }else{
+                for (let i = 0; i < response.length; i++) {
+                  let publicacion = response[i];
+                
+                  let publiajax = new FormData();
+                  publiajax.append("idpublicacion",publicacion.idpublicacion);
+                  publicacionid(publiajax).then(response=>{
+                   
+                    let h1 = document.createElement("h1");
+                    h1.innerText = "Trabajos a los que he sido seleccionado";
+
+
+                  })
+                }
+              }
+            })
+          }
+      })
+    })
+
+
+    publicacionid = async(publiajax) =>{
+      const response = await axios.post("api/publicacion/consultaId.php",publiajax);
+      return await response.data;
+    }
+
+    consultaSelec = async(consultaSelec) =>{
+      const response = await axios.post("api/seleccionado/querySeleccionado.php",consultaSelec);
+      return await response.data;
+    }
+
+
+    crearSeleccionado = async(formdata)=>{
+      const response = await axios.post("api/seleccionado/createSeleccionado.php",formdata);
+      return await response.data;
+    }
+
+
+    traemeLaPubli = async(publiAjax)=>{
+      const response = await axios.post("api/publicacion/queryNoseCuanto.php", publiAjax);
+      return await response.data;
+    }
+
+    traemeLpostulante = async(postulanteAjax)=>{
+      const response = await axios.post("api/postulante/queryPostulante2.php",postulanteAjax);
+      return await response.data;
+    }
+
+
+    cargarPostulacion = async()=>{
+      const response = await axios.get("api/postulacion/queryPostulacion.php");
+      return await response.data;
+    }
+
     cargarPersona = async(formData) =>{
       const response = await axios.post("api/persona/queryPersona.php", formData);
       return await response.data;

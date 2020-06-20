@@ -63,6 +63,3 @@ position: relative;
     background: rgb(70,49,49);
     background: radial-gradient(circle, rgba(70,49,49,1) 9%, rgba(0,0,0,1) 60%, rgba(4,15,18,1) 99%);
 }
-hr{
-    background: black;
-}
