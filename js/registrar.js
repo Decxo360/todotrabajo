@@ -148,6 +148,8 @@ createExperencia = async(xpAjax,idusuario,rut,nuevaExperiencia) =>{
   return await response.data;
 }
 
+
+
 function verificarCampos(){
 
     //PERSONA

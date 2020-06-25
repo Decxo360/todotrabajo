@@ -29,7 +29,7 @@
             require_once "crearPublicacion.php";
             } ?> 
       
-            <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Trabajos Formales ingresados en nuestra plataforma</h1>
+            <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Trabajos Informales ingresados en nuestra plataforma</h1>
            </div>
      <!-- Modal -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -66,4 +66,4 @@
 <?php 
 require_once "templates/footer.php"
 ?>
-<script src="js/trabajoFormal.js" ></script>
+<script src="js/trabajoInformal.js" ></script>

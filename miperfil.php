@@ -1,3 +1,4 @@
+
 <?php
 require_once "templates/header.php";
 require_once "api/bd.php";
@@ -18,8 +19,9 @@ require_once "api/bd.php";
                     $experiencia->esPostulado = $fila[2];
                     $experiencia->puntos= $fila[3];
                     $experiencia->esSubido= $fila[4];
-                    $experiencia->idusuario = $fila[5];
-                    $experiencia->rut = $fila[6];
+                    $experiencia->xp = $fila[5];
+                    $experiencia->idusuario = $fila[6];
+                    $experiencia->rut = $fila[7];
                     $lista[] = $experiencia;
                     $entre = true;
                 }
@@ -49,13 +51,14 @@ require_once "api/bd.php";
            }
            
            echo'
+           <link ref="stylesheet" href="css/valoracion.css">
            <div class="contenedor">
            <div style="margin-left: 32px;">
            <img class="redondo1" src="img/putopng.jpg" alt="">
            <div class="row">
                <div class="col-lg-10 dflexCorreo">
-               <input type="image" src="img/tuerca.png" name="" id="" class="config"  data-toggle="collapse" data-target="#demo1">
-               <div id="demo1" class="collapse option">
+               <input type="image" src="img/tuerca.png" name="" id="" class="config"  data-toggle="collapse" data-target="#demos">
+               <div id="demos" class="collapse option">
                  <h1 style="text-align: center;" >Opciones</h1>
                   <hr style="color: black; height:0px; margin-top:-11px; width: 167px;">
                  <div type="button" id="Postulantes">
@@ -67,15 +70,11 @@ require_once "api/bd.php";
                     <h6 style="text-align: center;">Ver los trabajos a los que he sido seleccionado</h6>
                     <hr>
                   </div>
-                  <div type="button">
-                    <h6 style="text-align: center;">Cambiar password</h6>
+                  <div type="button" id="finalizar">
+                    <h6 style="text-align: center;" href="finalizarTrabajo.php">Finalizar trabajos </h6>
                     <hr>
                   </div>
-                  <div type="button">
-                    <h6 style="text-align: center;">Cambiar correo</h6>
-                    <hr>
-                  </div>
-                </div>
+                </div id="informacion">
                    <h6 class="correo" style="text-align: center; color: black;">',$persona->nombre,' ',$persona->apellidoP,' ',$persona->apellidoM,'</h6>
                    <h6 style="text-align: center; color: black;">',$_SESSION["usuario"]->email,'</h6>
                </div>

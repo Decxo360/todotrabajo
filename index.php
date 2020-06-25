@@ -12,8 +12,8 @@ require_once "templates/header.php";
               require_once "crearPublicacion.php";
             }
             ?>
-                <button class="btn btn-ligh button " style="background: #fff;" > <a href="trabajoFromal.php" style="color: black;">Trabajos informales</a> </button>
-                 <button class="btn btn-ligh button " style="background: #fff;">Trabajos formales</button>
+                <button class="btn btn-ligh button " style="background: #fff;" > <a href="trabajoFromal.php" style="color: black;">Trabajos Formal</a> </button>
+                 <button class="btn btn-ligh button " style="background: #fff;"> <a href="trabajoInformal.php" style="color: black;">Trabajos informales</a></button>
             </div>
         </div>
         <div class="relleno">

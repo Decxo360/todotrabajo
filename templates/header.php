@@ -113,7 +113,7 @@
         ?>
                 <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1"
           role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog ">
             <div class="modal-content">
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -127,10 +127,7 @@
                 <h6 style="color: rgb(157, 163, 163); text-align: center;">
                   Inicia sesión y comienza a postular a los trabajos que ya estan disponibles y/o subir trabajos
                 </h6><br>
-                <div class="btn-group" style="margin-left: 144px;" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-outline-secondary">Personal</button>
-                  <button type="button" class="btn btn-outline-secondary">Empresa</button>
-                </div>
+                
                 <form action="" method="post">
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="correoPersona">Ingrese con su correo eletrónico:</label>
@@ -164,7 +161,7 @@
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
           role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -179,10 +176,6 @@
                   Registrate y comienza a postular a los trabajos que ya estan disponibles y/o subir trabajos.
                 </h6>
                 <hr><br>
-                <div class="btn-group" style="margin-left: 144px;" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-outline-secondary">Personal</button>
-                  <button type="button" class="btn btn-outline-secondary">Empresa</button>
-                </div>
                 <form action="" method="post">
                   <div class="form-group">
                     <label class="text-dark is-invalid" for="nombrePersona">Ingrese su Nombre:</label>
@@ -191,8 +184,7 @@
                       Ingrese este campo
                     </div>
                   </div>
-
-                  <div class="form-group">
+                  <div class="form-group">s
                     <label class="text-dark is-invalid" for="apellidoMPersona">Ingrese con su apellido materno:</label>
                     <input class="form-control" type="text" name="apellidoMPersona" value="" id="apellidoMPersona" required>
                     <div class="invalid-feedback d-none" id="invalido8">
