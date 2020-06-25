@@ -21,26 +21,26 @@
           <img src="img/logo.png" alt="" style="height:600px; width:600px;">
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 mx-auto mt-10" style="height: 667px;">
-        <div class="row">
-        <div class="col-lg-3">
-        <select class="form-control" name="" id="dropdownList">
-        <option value="">Ninguno</option>
-        <option value="">Empleador</option>
-        <option value="">Trabajador</option>
-        </select>
-        </div>
-        <div class="col-lg-3">
-        <select class="form-control" name="" id="dropdownTrabajos">
-        <option value="">Ninguno</option>
-        </select>
-        </div>
-        </div>
+        
           <h1 style="margin-top: 5%; text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >¡Finaliza el trabajo ya!</h1>
+          <div class="row">
+          <div class="col-lg-6">
+          <select class="form-control" name="" id="dropdownList">
+          <option value="" selected disabled>Ninguno</option>
+          <option value="">Empleador</option>
+          <option value="">Trabajador</option>
+          </select>
+          </div>
+          <div class="col-lg-6">
+          <select class="form-control" name="" id="dropdownTrabajos">
+          <option value="" selected disabled>Ninguno</option>
+          </select>
+          </div>
+          </div>
           <hr>
             <input type="image" src="img/down.png" style="width: 20px; height: 20px; margin-left: 90%; margin-top: 5%;" data-toggle="collapse" data-target="#demo2" style="position: absolute; float: none;" >
             <div id="demo2" class="collapse" >
               <div id="creados"> 
-              
               </div>
               <div id="postulados">
               </div>
