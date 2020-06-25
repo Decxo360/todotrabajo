@@ -27,8 +27,8 @@
           <div class="col-lg-6">
           <select class="form-control" name="" id="dropdownList">
           <option value="" selected disabled>Ninguno</option>
-          <option value="">Empleador</option>
-          <option value="">Trabajador</option>
+          <option value="Empleador" id="empleador">Empleador</option>
+          <option value="Trabajador" id=trabajador >Trabajador</option>
           </select>
           </div>
           <div class="col-lg-6">

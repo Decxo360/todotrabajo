@@ -1,9 +1,12 @@
 <?php
 require_once "../bd.php";
 session_start();
-$sql = "SELECT * FROM roles WHERE (rol=Trabajador && idusuario=".$_SESSION["usuario"]->idusuario.")";
+$idusuario = $_SESSION["usuario"]->idusuario ;
+$rol = "Trabajador";
+$sql = "SELECT * FROM roles WHERE (idusuario = ? && rol = ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);
+$st->bind_param("is",$idusuario,$rol);
 $st->execute();
 $result = $st->get_result();
 $lista = array();
