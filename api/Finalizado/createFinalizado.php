@@ -1,8 +1,14 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
 require_once "../bd.php";
 $idpublicacion = $_POST["idpublicacion"]; // arreglos asociativo
 $estado = "pendiente";
 $pagado = "pendiente";
+/**
+ * Sentencia sql pora insertar datos en la tabla finalizado
+ */
 $sql = "INSERT INTO finalizado(idpublicacion,estado,pagado)"
       ." VALUES(?,?,?)";
 $mysqli = conectar();

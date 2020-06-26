@@ -1,3 +1,6 @@
+/**
+ * Obtiene todas la publicaciones creadas por el usuario que inicio sesion
+ */
 window.obtenerPublicacion = function () {
   $("#publicacion").removeClass("btn-ligh", "button", "btn2");
   $("#publicacion").removeClass("button");
@@ -10,7 +13,10 @@ window.obtenerPublicacion = function () {
     window.cargarPublicaciones(response.data);
   });
 };
-
+/**
+ * Obtiene la lista de publicaciones retornadas por obtenerPublicacion()
+ * @param {Lista de publicaciones} publicaciones 
+ */
 window.cargarPublicaciones = function (publicaciones) {
   cuerpo = document.querySelector("#mispublicaciones");
   for (let i = 0; i < publicaciones.length; i++) {
@@ -222,7 +228,9 @@ window.cargarPublicaciones = function (publicaciones) {
     });
   }
 };
-
+/**
+ * Obtiene la lista de los postulantes y la lista de la publicacion que tiene postulantes
+ */
 document.getElementById("Postulantes").addEventListener("click", function () {
   let div1 = document.getElementById("postulantes");
   $("#postulantes").empty();
@@ -442,7 +450,8 @@ document.getElementById("seleccionado").addEventListener("click", function () {
 
               
               h6.innerText = "Has sido seleccionado al trabajo: "+ response[0].titulo;
-
+              let h62 = document.createElement("h6");
+              h62.innerText = "Direccion: " + response[0].ubicacion;
               let formData = new FormData();
 
               formData.append("rut", response[0].rut);
@@ -455,6 +464,7 @@ document.getElementById("seleccionado").addEventListener("click", function () {
 
               $(h6).css("text-align","center");
               $(h6nombrePublicacion).css("text-align","center");
+              $(h62).css("text-align","center");
 
 
               div.classList.remove("d-none");
@@ -462,6 +472,7 @@ document.getElementById("seleccionado").addEventListener("click", function () {
 
               //Crear los elementos en miperfil.php
               divshadow.appendChild(h6);
+              divshadow.appendChild(h62);
               divshadow.appendChild(h6nombrePublicacion);
               
               div.appendChild(divshadow);
@@ -476,7 +487,8 @@ document.getElementById("seleccionado").addEventListener("click", function () {
 });
 
 /**
- * Carga la ultima calificacion ingresada por un usuario
+ * Carga la ultima calificacion ingresada por un usuario en formas de estrella
+ * luego le da estilos css 
  */ 
 
 
@@ -558,18 +570,24 @@ function Cargarpuntuacion(){
 
  })
 }
-
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 crearFinalizado = async(finalizadoAjax)=>{
   const response = await axios.post("api/finalizado/createFinalizado.php",finalizadoAjax);
   return await response.data;
 }
-
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 crearRol2 = async(RolEmpleadoAjax)=>{
   const response = await axios.post("api/roles/createRol2.php",RolEmpleadoAjax);
   return await response.data;
 }
 
-
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 consultaSeleccionado = async()=>{
   const response = await axios.get("api/seleccionado/queryEmpleador.php");
   return await response.data;

@@ -42,8 +42,6 @@
             <div id="demo2" class="collapse" >
               <div id="creados"> 
               </div>
-              <div id="postulados">
-              </div>
             </div>
             <hr>
             <form action="" style="margin-top: 15%;">
@@ -56,39 +54,39 @@
                 <label for="codigo2">Ingrese el codigo del trabajador</label>
                 <input type="text"class="form-control" id="codigo2">
               </div>
-              <div class="form-group d-none"id="empleador">
+              <div class="form-group d-none" id="empleadores">
                 <label for=""> Ingrese la clasificacion del empleador </label>
                 <p class="clasificacion" style="text-align: center; font-size: xx-large;">
-                  <input id="radio1" type="radio" name="estrellas" value="5">
-                  <label for="radio1">★</label>
-                  <input id="radio2" type="radio" name="estrellas" value="4">
-                  <label for="radio2">★</label>
-                  <input id="radio3" type="radio" name="estrellas" value="3">
-                  <label for="radio3">★</label>
-                  <input id="radio4" type="radio" name="estrellas" value="2">
-                  <label for="radio4">★</label>
-                  <input id="radio5" type="radio" name="estrellas" value="1">
-                  <label for="radio5">★</label>
+                  <input id="radio11" type="radio" name="estrellas" value="1">
+                  <label for="radio11">★</label>
+                  <input id="radio22" type="radio" name="estrellas" value="2">
+                  <label for="radio22">★</label>
+                  <input id="radio33" type="radio" name="estrellas" value="3">
+                  <label for="radio33">★</label>
+                  <input id="radio44" type="radio" name="estrellas" value="4">
+                  <label for="radio44">★</label>
+                  <input id="radio55" type="radio" name="estrellas" value="5">
+                  <label for="radio55">★</label>
                 </p>
               </div>
-              <div class="form-group d-none" id="trabajador">
+              <div class="form-group d-none" id="trabajadores">
                 <label for=""> Ingrese la clasificacion del Trabajador </label>
                 <p class="clasificacion" style="text-align: center; font-size: xx-large;">
-                  <input id="radio1" type="radio" name="estrellas" value="5">
+                  <input id="radio1" type="radio" name="estrellas" value="1">
                   <label for="radio1">★</label>
-                  <input id="radio2" type="radio" name="estrellas" value="4">
+                  <input id="radio2" type="radio" name="estrellas" value="2">
                   <label for="radio2">★</label>
                   <input id="radio3" type="radio" name="estrellas" value="3">
                   <label for="radio3">★</label>
-                  <input id="radio4" type="radio" name="estrellas" value="2">
+                  <input id="radio4" type="radio" name="estrellas" value="4">
                   <label for="radio4">★</label>
-                  <input id="radio5" type="radio" name="estrellas" value="1">
+                  <input id="radio5" type="radio" name="estrellas" value="5">
                   <label for="radio5">★</label>
                 </p>
               </div>
             </form>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" type="submit"> Terminar </button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit" id="finalizarTrabajo"> Terminar </button>
             </div>
             <h1 style="text-align: center;  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">¡Gracias por preferirnos!</h1>
         </div>

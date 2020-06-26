@@ -1,7 +1,13 @@
 <?php
+/**
+ *Llamo a la conexion a la base de datos
+ */
     require_once "../bd.php";
     $rut = $_POST["rut"];
     $mysqli = conectar();
+    /**
+     * Sentencia sql, la cual es una consulta
+     */
     $st = $mysqli->prepare("SELECT * FROM experiencia 
         WHERE rut='?'");
     $st->bind_param("s", $rut);
@@ -22,4 +28,7 @@
         $entre = true;
     }
     $st->close();
+    /**
+     * Resultado de la consulta
+     */
     echo json_encode($lista);

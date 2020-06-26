@@ -1,7 +1,16 @@
 <?php
+/**
+ * Llama a la conexion a la base de datos
+ */
 require_once "../bd.php";
+/**
+ * Datos de la sesion 
+ */
 session_start();
 $rut =$_SESSION["usuario"]->rut;
+/**
+ * consulta sql para que me traiga todo de experiencia cuando el rut sea igual al de la sesion
+ */
 $sql = "SELECT * FROM experiencia 
 WHERE rut=?";
 $bd = conectar();

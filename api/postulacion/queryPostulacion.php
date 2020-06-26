@@ -1,7 +1,13 @@
 <?php
+/**
+ * Llama la conexion de la bd
+ */
 require_once "../bd.php";
 session_start();
 $rut = $_SESSION["usuario"]->rut;
+/**
+ * Sentencia sql con datos de la sesion iniciada
+ */
 $sql = "SELECT * FROM postulacion WHERE ( rut= ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

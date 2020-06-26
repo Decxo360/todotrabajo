@@ -1,3 +1,7 @@
+/**
+ * obtiene las publicaciones informales desde la base de datos
+ * retorna una lista de publicaciones informales
+ */
 window.obtenerPublicacion = function() {
     $("#publicacion").removeClass("btn-ligh","button", "btn2");
     $("#publicacion").removeClass("button");
@@ -11,7 +15,11 @@ window.obtenerPublicacion = function() {
     });
   };
   
-  
+  /**
+ * Este método obtiene una lista de las publicaciones informales, crea los elementos html
+ * correspondiente a la la publicacion, les da las clases css y boostrap y los proyecta en la página
+ * @param {Lista de publicaciones} publicaciones 
+ */
   window.cargarPublicaciones = function(publicaciones){
   cuerpo = document.querySelector("#mispublicaciones");
   for (let i = 0; i < publicaciones.length; i++) {
@@ -219,38 +227,61 @@ window.obtenerPublicacion = function() {
   
   
   }
-  
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   cargarPersona = async(formData) =>{
     const response = await axios.post("api/persona/queryPersona.php", formData);
     return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   obtenerPregunta = async(preguntaAjax)=>{
   const response = await axios.post("api/pregunta/queryPregunta.php", preguntaAjax);
   return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   crearRespuesta = async(formRes)=>{
    const response = await axios.post("api/respuesta/createRespuesta.php",formRes);
    return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   
   datosPersona = async()=>{
   const response = await axios.get("api/persona/datosPersona.php");
   return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   crearPostulante = async (postulanteAjax) =>{
    const response = await axios.post("api/postulante/createPostulante.php", postulanteAjax);
    return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   
   consultarPostulante = async()=>{
     const response = await axios.get("api/postulante/queryPostulante.php");
     return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   
   crearPostulacion = async(postulacionAjax)=>{
     const response = await axios.post("api/postulacion/createPostulacion.php",postulacionAjax);
     return await response.data;
   }
+  /**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
   
   
   window.obtenerPublicacion();

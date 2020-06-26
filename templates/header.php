@@ -76,21 +76,6 @@
                 </div>
               </div>
                 </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white"href=" #">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ayuda
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
         </ul>
       </div>
       <div>

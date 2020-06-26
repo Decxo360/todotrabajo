@@ -1,4 +1,7 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
   require_once "../bd.php";
   $descripcion = $_POST["descripcion"]; // arreglos asociativo
   $aPagar = $_POST["aPagar"];
@@ -9,13 +12,11 @@
   session_start();
   $idusuario = $_SESSION["usuario"]->idusuario ;
   $rut= $_SESSION["usuario"]->rut;
-  $tipoPublicacion;
-  if($_SESSION["usuario"]->tipoUsuario == "usuario"){
-    $tipoPublicacion = "informal";
-  }else{
-    $tipoPublicacion = "formal";
-  }
-  $etiqueta=$_POST["etiqueta"];
+  $tipoPublicacion=$_POST["tipoPublicacion"];
+  $etiqueta = $_POST["etiqueta"];
+  /**
+   * Sentencia sql, insercion a la bd
+   */
   $sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,fechafinal,idusuario,rut,tipoPublicacion,etiqueta)"
         ." VALUES(?,?,?,?,?,?,?,?,?,?)";
   $mysqli = conectar();

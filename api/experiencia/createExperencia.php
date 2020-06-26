@@ -1,4 +1,7 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
   require_once "../bd.php";
   $esRealizado = $_POST["esRealizado"]; // arreglos asociativo
   $esPostulado = $_POST["esPostulado"];
@@ -6,12 +9,9 @@
   $esSubido = $_POST["esSubido"];
   $idusuario = $_POST["idusuario"];
   $rut = $_POST["rut"];
-  echo $esRealizado;
-  echo $esPostulado;
-  echo $puntos;
-  echo $esSubido;
-  echo $idusuario;
-  echo $rut;
+   /**
+   * Se crea la consulta sql en este caso insertar valores en una
+   */
   $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubido,idusuario,rut)"
         ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();
@@ -26,4 +26,7 @@
   } else{
       $respuesta->resultado = false;
   }
+    /**
+   * Se obtiene el resultado
+   */
   echo json_encode($respuesta);

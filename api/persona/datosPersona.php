@@ -1,8 +1,14 @@
 <?php
+/**
+ * Llama a la conexion a de la base de datos
+ */
     require_once "../bd.php";
     session_start();
     $rut = $_SESSION["usuario"]->rut;
     $mysqli = conectar();
+    /**
+     * Sentencia sql para traer todos los datos con el rut de la sesion iniciada
+     */
     $st = $mysqli->prepare("SELECT * FROM persona 
         WHERE(rut=?)");
     $st->bind_param("s", $rut);

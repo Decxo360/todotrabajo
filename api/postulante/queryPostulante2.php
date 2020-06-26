@@ -1,6 +1,12 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
 require_once "../bd.php";
 $postulante = $_POST["idpostulante"];
+/**
+ * Sentencia sql
+ */
 $sql = "SELECT * FROM postulante WHERE (idpostulante= ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

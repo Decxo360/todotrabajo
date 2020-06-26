@@ -1,4 +1,7 @@
 <?php
+/**
+ * Llama a la conexion a la base de datos
+ */
   require_once "../bd.php";
   $nombre = $_POST["nombre"]; // arreglos asociativo
   $apellidoM = $_POST["apellidoM"];
@@ -7,6 +10,9 @@
   $edad= $_POST["edad"];
   $tarjeta = $_POST["tarjeta"];
   echo $nombre;
+  /**
+   * sentencia sql para hacer insercion de datos
+   */
   $sql = "INSERT INTO persona(nombre,apellidoM,apellidoP,rut,edad,tarjeta)"
         ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();

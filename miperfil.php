@@ -139,3 +139,4 @@ require_once "api/bd.php";
 
 <?php require_once "templates/footer.php";?>
 <script src="js/perfil.js" ></script>
+<script src="js/index.js"></script>

@@ -1,3 +1,6 @@
+/**
+ * Inicializa los dos métodos definidos posterior mente
+ */
 document.querySelector("#btnLoggear").addEventListener("click", function(){
 
     let correo = document.querySelector("#correoPersona1").value;
@@ -11,6 +14,10 @@ document.querySelector("#btnLoggear").addEventListener("click", function(){
     }
 
 });
+
+/**
+ * Valida que la contraseña y el correo no sean vacios
+ */
 function iniciarValidacion(){
     
     let correo = document.querySelector("#correoPersona1").value;
@@ -32,6 +39,11 @@ function iniciarValidacion(){
         return false;
     }
 }
+
+/**
+ * Obtiene el correo ingresado por el usuario y la contraseña válida que existan en la bd con axios
+ *este retorna la session iniciada
+ */
 function crearConsulta(){
 
     let correo = document.querySelector("#correoPersona1").value;
@@ -63,6 +75,10 @@ function crearConsulta(){
         })
 
 }
+
+/**
+ * Obtiene la pass y el correo, se lo pasa a la consulta en queryUsuario.php y retorna la sessions
+ */
 
 createQuery = async(formData) => {
  const response = await axios.post("api/usuario/queryUsuario.php", formData);

@@ -67,3 +67,4 @@
 require_once "templates/footer.php"
 ?>
 <script src="js/trabajoInformal.js" ></script>
+<script src="js/index.js"></script>

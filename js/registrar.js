@@ -13,7 +13,9 @@ let postulados = 0;
 let puntos = 0;
 let trabajoSubidos=0;
 let idusuario;
-
+/**
+ * Inicializa los métodos definidos posteriormente
+ */
 document.querySelector("#btnRegistrar").addEventListener("click", function () {
   //PERSONA
   let nombre = document.querySelector("#nombrePersona").value;
@@ -36,6 +38,13 @@ document.querySelector("#btnRegistrar").addEventListener("click", function () {
   }
 
 });
+
+/**
+ * Obtiene todos los datos del registro de persona como tabla
+ * nombre,apellidoP,apellidoM,rut,tarjeta y edad
+ * Obtiene todos los datos del registro del usuario como tabla
+ * correo, contraseña
+ */
 function iniciarRegistro(){
     //PERSONA
     let nombre = document.querySelector("#nombrePersona").value;
@@ -126,15 +135,25 @@ function iniciarRegistro(){
     })
   })
 }
+
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 createPersona = async(formData) => {
   const response = await axios.post("api/persona/createPersona.php", formData);
   return await response.data;
 }
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 createUser = async (formData2) => {
   const response = await axios.post("api/usuario/createUsuario.php", formData2);
   return await response.data;
   
 }
+/**
+ * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
+ */
 createQuery = async (formdata1) =>{
   const response = await axios.post("api/usuario/queryUsuario.php",formdata1);
   return await response.data;
@@ -149,7 +168,10 @@ createExperencia = async(xpAjax,idusuario,rut,nuevaExperiencia) =>{
 }
 
 
-
+/**
+ * Valida que los campos ingresados en el método IniciarRegistro() no sean vacios, en caso que sean
+ * vacios este lanza un error
+ */
 function verificarCampos(){
 
     //PERSONA

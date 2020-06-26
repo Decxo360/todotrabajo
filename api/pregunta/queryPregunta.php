@@ -1,8 +1,14 @@
 <?php
+/**
+ * Llama a la conexión de la base de datos
+ */
 require_once "../bd.php";
 $idpublicacion = $_POST["idpublicacion"];
 $idusuario = $_POST["idusuario"];
 $rut = $_POST["rut"];
+/**
+ * Sentencia sql, consulta todos los datos de pregunta
+ */
 $sql = "SELECT * FROM pregunta WHERE (idpublicacion= ? && idusuario= ? && rut= ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

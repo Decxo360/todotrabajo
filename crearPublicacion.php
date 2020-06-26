@@ -50,7 +50,21 @@
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Ingrese lo que necesita saber de la persona que escogera. Ej: ¿Cuantos años lleva en el rubro?
                 </small>
-              </div>            
+              </div> 
+              <div class="form-group">
+                <input type="checkbox" class="form-check-input" id="ItipoPublicacion">
+                <label class="form-check-label text-dark" for="ItipoPublicacion">formal</label>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                  Ingrese si es de carácter formal o informal
+                </small>
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="form-check-input" id="ItipoPublicacion2">
+                <label class="form-check-label text-dark" for="ItipoPublicacion2">informal</label>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                  Ingrese si es de carácter formal o informal
+                </small>
+              </div>                 
             </form>
           </div>
           <div class="col-lg-6">
@@ -154,30 +168,3 @@
     </div>
   </div>
 </div>
-
-<?php
-
-//require_once "../bd.php";
-//$descripcion = $_POST["descripcion"]; // arreglos asociativo
-//$aPagar = $_POST["aPagar"];
-//$ubicacion = $_POST["ubicacion"];
-//$fecha = $_POST["fecha"];
-//$titulo = $_POST["titulo"];
-//$idusuario = $_POST["idusuario"];
-//$rut=$_POST["rut"];
-//$sql = "INSERT INTO publicacion(descripcion,aPagar,ubicacion,fecha,titulo,idusuario)"
-//      ." VALUES(?,?,?,?,?,?,?)";
-//$mysqli = conectar();
-//$respuesta = new stdClass();
-//if($mysqli){
-//    $st = $mysqli->prepare($sql);
-//    $st->bind_param("sssssis",$descripcion,$aPagar,$ubicacion,$fecha,$titulo,$idusuario,$rut);
-//    $st->execute();
-//    $st->close();
-//    $respuesta->resultado = true;
-//    $respuesta->comentario = "Los datos han sido ingresados correctamente";
-//} else{
-//    $respuesta->resultado = false;
-//}
-//echo json_encode($respuesta);
-?>

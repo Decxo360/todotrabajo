@@ -1,4 +1,7 @@
 <?php
+/**
+ * llama a la conexion de la base de datos
+ */
     require_once "../bd.php";
     $mysqli = conectar();
     $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (tipoPublicacion='formal')");
