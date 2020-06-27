@@ -18,7 +18,9 @@
       </div>
       </div>
 
-
+      <div class="publicidad d-none">
+        <img src="img/publisidad.jpg" alt="" style="height: 200px ;width: 100%">
+      </div>
       <div class="col-lg-12" id="mispublicaciones"> 
       
             <?php 
