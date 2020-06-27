@@ -14,7 +14,124 @@ window.obtenerPublicacion = function() {
         window.cargarPublicaciones(response.data);
     });
   };
+  /**
+   * Obtiene lo ingresado en un input se lo pasa a axios para que realice
+   * la consulta sql retorna el valor buscado, en caso de que no exista no
+   * se realizará nada, no se creará la interfaz de la publicacion
+   */
+  document.getElementById("filtrar").addEventListener("click", function () {
+    $("#cuerpo").empty();
+    let filtro = document.getElementById("filtro").value;
+    cuerpo = document.querySelector("#cuerpo");
+    console.log(filtro);
+    let esFiltrado = {};
+    esFiltrado.filtro = filtro;
+    let h1encabezado = document.createElement("h1");
+    h1encabezado.innerText = "El resultado de: " + filtro;
+    h1encabezado.style.textAlign = "center";
+    cuerpo.appendChild(h1encabezado);
+    let filtroajax = new FormData();
+    filtroajax.append("etiqueta", esFiltrado.filtro);
+    axios
+      .post("api/publicacion/queryFiltroInformal.php", filtroajax)
+      .then((response) => {
+        
+        console.log(response.data);
+        for (let i = 0; i < response.data.length; i++) {
+          let publicaciones = response.data[i];
   
+          console.log(publicaciones);
+          console.log(publicaciones.idpublicacion);
+          //Creación de elementos html
+  
+          let divSombra = document.createElement("div");
+          let div = document.createElement("div");
+          let divcollapse = document.createElement("div");
+          let h6Hashtag = document.createElement("h6");
+          let h6 = document.createElement("h6");
+          let h6Nombre = document.createElement("h6");
+          let h6descripcion = document.createElement("h6");
+          let h1Titulo = document.createElement("h1");
+          let inputColapse = document.createElement("input");
+          let imgPersona = document.createElement("img");
+  
+          let buttonModal = document.createElement("button");
+  
+          //Darle los valores de la publicacion actual
+  
+          let publicacionActual = publicaciones[i];
+          
+  
+          //Pasarle las clases a los elementos
+  
+          divSombra.classList.add("shadow-lg", "p3", "bg-white", "rounded");
+          imgPersona.classList.add("fotoPersona");
+          h6Nombre.classList.add("nombrePersona");
+          h6Hashtag.classList.add("hashtag");
+          h1Titulo.classList.add("titulo");
+          divcollapse.classList.add("collapse");
+          inputColapse.classList.add("down");
+          buttonModal.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
+  
+          //Pasarle atributos a los elementos
+  
+          imgPersona.setAttribute("src", "img/putopng.jpg");
+          inputColapse.setAttribute("type", "image");
+          inputColapse.setAttribute("src", "img/down.png");
+          inputColapse.setAttribute("data-toggle", "collapse");
+          inputColapse.setAttribute(
+            "data-target",
+            "#demo" + publicaciones.idpublicacion
+          );
+          divcollapse.setAttribute(
+            "id",
+            "demo" + publicaciones.idpublicacion
+          );
+          buttonModal.setAttribute("type", "button");
+          buttonModal.setAttribute("data-toggle", "modal");
+          buttonModal.setAttribute("data-target", "#modal");
+          buttonModal.setAttribute(
+            "id",
+            "modal" + publicaciones.idpublicacion
+          );
+          // Darle los value a los elementos html
+  
+          h6.innerText = "#" + publicaciones.etiqueta;
+          h1Titulo.innerText = publicaciones.titulo;
+          h6.innerText = "Publicado: " + publicaciones.fecha;
+          h6descripcion.innerText = publicaciones.descripcion;
+          h6Hashtag.innerHTML = publicaciones.etiqueta;
+          buttonModal.innerHTML = "¡Postula!";
+          let formData = new FormData();
+          let personaAjax = {};
+          personaAjax.rut = publicaciones.rut;
+          formData.append("rut", personaAjax.rut);
+          cargarPersona(formData).then((response) => {
+            for (let i = 0; i < response.length; i++) {
+              let personaActual = response[i];
+              h6Nombre.innerText =
+                personaActual.nombre +
+                " " +
+                personaActual.apellidoP +
+                " " +
+                personaActual.apellidoM;
+            }
+          });
+          divSombra.appendChild(div);
+          divSombra.appendChild(h6Hashtag);
+          divSombra.appendChild(h1Titulo);
+          divSombra.appendChild(h6);
+          divSombra.appendChild(inputColapse);
+          divSombra.appendChild(divcollapse);
+          div.appendChild(imgPersona);
+          div.appendChild(h6Nombre);
+          divcollapse.appendChild(h6descripcion);
+          divcollapse.appendChild(buttonModal);
+          cuerpo.appendChild(divSombra);
+        }
+      });
+  });
+
   /**
  * Este método obtiene una lista de las publicaciones informales, crea los elementos html
  * correspondiente a la la publicacion, les da las clases css y boostrap y los proyecta en la página

@@ -64,7 +64,7 @@ function iniciarRegistro(){
     let postulados = 0;
     let puntos = 0;
     let trabajoSubidos=0;
-    let idusuario;
+    let idusuariox;
 
   //creando a la persona
   let nuevaPersona = {};
@@ -104,6 +104,11 @@ function iniciarRegistro(){
   nuevaExperiencia.postulados = postulados;
   nuevaExperiencia.puntos = puntos;
   nuevaExperiencia.trabajoSubidos = trabajoSubidos;
+  let exp = 5;
+  nuevaExperiencia.exp = exp
+  nuevaExperiencia.idusuariox = idusuariox;
+  nuevaExperiencia.rut=rut;
+
 
   nuevaExperiencia.rut = rut;
 
@@ -113,6 +118,7 @@ function iniciarRegistro(){
   xpAjax.append("esPostulado", nuevaExperiencia.postulados);
   xpAjax.append("puntos", nuevaExperiencia.puntos);
   xpAjax.append("esSubido", nuevaExperiencia.trabajoSubidos);
+  xpAjax.append("xp",nuevaExperiencia.exp);
  
   
   //crear la query del usuario
@@ -128,8 +134,12 @@ function iniciarRegistro(){
   createPersona(formData).then(resposne =>{
     createUser(formData2).then(resposne =>{
       createQuery(formdata1).then(response =>{
-        idusuario=response.idusuario;
-        createExperencia(xpAjax,idusuario,rut,nuevaExperiencia).then(response =>{
+        idusuariox = response.idusuario;
+        nuevaExperiencia.idusuariox = idusuariox;
+        xpAjax.append("idusuario",nuevaExperiencia.idusuariox);
+        xpAjax.append("rut", nuevaExperiencia.rut);
+        createExperencia(xpAjax).then(response =>{
+         location.reload();
         })
       })
     })
@@ -158,11 +168,7 @@ createQuery = async (formdata1) =>{
   const response = await axios.post("api/usuario/queryUsuario.php",formdata1);
   return await response.data;
 }
-createExperencia = async(xpAjax,idusuario,rut,nuevaExperiencia) =>{
-  nuevaExperiencia.idusuario = idusuario;
-  nuevaExperiencia.rut=rut;
-  xpAjax.append("idusuario",nuevaExperiencia.idusuario);
-  xpAjax.append("rut", nuevaExperiencia.rut);
+createExperencia = async(xpAjax) =>{
   const response = await axios.post("api/experiencia/createExperencia.php", xpAjax);
   return await response.data;
 }

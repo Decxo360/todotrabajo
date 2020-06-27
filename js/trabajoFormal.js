@@ -2,275 +2,408 @@
  * obtiene las publicaciones formales desde la base de datos
  * retorna una lista de publicaciones formales
  */
-window.obtenerPublicacion = function() {
-  $("#publicacion").removeClass("btn-ligh","button", "btn2");
+window.obtenerPublicacion = function () {
+  $("#publicacion").removeClass("btn-ligh", "button", "btn2");
   $("#publicacion").removeClass("button");
   $("#publicacion").removeClass("btn2");
-  $("#publicacion").css("margin-top","20px");
-  $("publicacion").css("margin-bottom","20px");
+  $("#publicacion").css("margin-top", "20px");
+  $("publicacion").css("margin-bottom", "20px");
   $("#publicacion").addClass("btn-primary");
   $("#publicacion").addClass("btn-lg btn-block");
-  axios.get('api/publicacion/queryPublicacion.php').then(function(response) {
-      window.cargarPublicaciones(response.data);
+  axios.get("api/publicacion/queryPublicacion.php").then(function (response) {
+    window.cargarPublicaciones(response.data);
   });
 };
+
+ /**
+   * Obtiene lo ingresado en un input se lo pasa a axios para que realice
+   * la consulta sql retorna el valor buscado, en caso de que no exista no
+   * se realizará nada, no se creará la interfaz de la publicacion
+   */
+document.getElementById("filtrar").addEventListener("click", function () {
+  $("#cuerpo").empty();
+  let filtro = document.getElementById("filtro").value;
+  cuerpo = document.querySelector("#cuerpo");
+  console.log(filtro);
+  let esFiltrado = {};
+  esFiltrado.filtro = filtro;
+  let h1encabezado = document.createElement("h1");
+  h1encabezado.innerText = "El resultado de: " + filtro;
+  h1encabezado.style.textAlign = "center";
+  cuerpo.appendChild(h1encabezado);
+  let filtroajax = new FormData();
+  filtroajax.append("etiqueta", esFiltrado.filtro);
+  axios
+    .post("api/publicacion/queryEtiqueta.php", filtroajax)
+    .then((response) => {
+      
+      console.log(response.data);
+      for (let i = 0; i < response.data.length; i++) {
+        let publicaciones = response.data[i];
+
+        console.log(publicaciones);
+        console.log(publicaciones.idpublicacion);
+        //Creación de elementos html
+
+        let divSombra = document.createElement("div");
+        let div = document.createElement("div");
+        let divcollapse = document.createElement("div");
+        let h6Hashtag = document.createElement("h6");
+        let h6 = document.createElement("h6");
+        let h6Nombre = document.createElement("h6");
+        let h6descripcion = document.createElement("h6");
+        let h1Titulo = document.createElement("h1");
+        let inputColapse = document.createElement("input");
+        let imgPersona = document.createElement("img");
+
+        let buttonModal = document.createElement("button");
+
+        //Darle los valores de la publicacion actual
+
+        let publicacionActual = publicaciones[i];
+        
+
+        //Pasarle las clases a los elementos
+
+        divSombra.classList.add("shadow-lg", "p3", "bg-white", "rounded");
+        imgPersona.classList.add("fotoPersona");
+        h6Nombre.classList.add("nombrePersona");
+        h6Hashtag.classList.add("hashtag");
+        h1Titulo.classList.add("titulo");
+        divcollapse.classList.add("collapse");
+        inputColapse.classList.add("down");
+        buttonModal.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
+
+        //Pasarle atributos a los elementos
+
+        imgPersona.setAttribute("src", "img/putopng.jpg");
+        inputColapse.setAttribute("type", "image");
+        inputColapse.setAttribute("src", "img/down.png");
+        inputColapse.setAttribute("data-toggle", "collapse");
+        inputColapse.setAttribute(
+          "data-target",
+          "#demo" + publicaciones.idpublicacion
+        );
+        divcollapse.setAttribute(
+          "id",
+          "demo" + publicaciones.idpublicacion
+        );
+        buttonModal.setAttribute("type", "button");
+        buttonModal.setAttribute("data-toggle", "modal");
+        buttonModal.setAttribute("data-target", "#modal");
+        buttonModal.setAttribute(
+          "id",
+          "modal" + publicaciones.idpublicacion
+        );
+        // Darle los value a los elementos html
+
+        h6.innerText = "#" + publicaciones.etiqueta;
+        h1Titulo.innerText = publicaciones.titulo;
+        h6.innerText = "Publicado: " + publicaciones.fecha;
+        h6descripcion.innerText = publicaciones.descripcion;
+        h6Hashtag.innerHTML = publicaciones.etiqueta;
+        buttonModal.innerHTML = "¡Postula!";
+        let formData = new FormData();
+        let personaAjax = {};
+        personaAjax.rut = publicaciones.rut;
+        formData.append("rut", personaAjax.rut);
+        cargarPersona(formData).then((response) => {
+          for (let i = 0; i < response.length; i++) {
+            let personaActual = response[i];
+            h6Nombre.innerText =
+              personaActual.nombre +
+              " " +
+              personaActual.apellidoP +
+              " " +
+              personaActual.apellidoM;
+          }
+        });
+        divSombra.appendChild(div);
+        divSombra.appendChild(h6Hashtag);
+        divSombra.appendChild(h1Titulo);
+        divSombra.appendChild(h6);
+        divSombra.appendChild(inputColapse);
+        divSombra.appendChild(divcollapse);
+        div.appendChild(imgPersona);
+        div.appendChild(h6Nombre);
+        divcollapse.appendChild(h6descripcion);
+        divcollapse.appendChild(buttonModal);
+        cuerpo.appendChild(divSombra);
+      }
+    });
+});
 
 /**
  * Este método obtiene una lista de las publicaciones formales, crea los elementos html
  * correspondiente a la la publicacion, les da las clases css y boostrap y los proyecta en la página
- * @param {Lista de publicaciones} publicaciones 
+ * @param {Lista de publicaciones} publicaciones
  */
-window.cargarPublicaciones = function(publicaciones){
-cuerpo = document.querySelector("#mispublicaciones");
-for (let i = 0; i < publicaciones.length; i++) {
-    
-  //Creación de elementos html
+window.cargarPublicaciones = function (publicaciones) {
+  cuerpo = document.querySelector("#mispublicaciones");
+  for (let i = 0; i < publicaciones.length; i++) {
+    //Creación de elementos html
 
-  let divSombra = document.createElement("div");
-  let div = document.createElement("div");
-  let divcollapse = document.createElement("div");
-  let h6Hashtag = document.createElement("h6");
-  let h6 = document.createElement("h6");
-  let h6Nombre = document.createElement("h6");
-  let h6descripcion = document.createElement("h6");
-  let h1Titulo = document.createElement("h1");
-  let inputColapse = document.createElement("input");
-  let imgPersona = document.createElement("img");
-  
-  let buttonModal = document.createElement("button");
+    let divSombra = document.createElement("div");
+    let div = document.createElement("div");
+    let divcollapse = document.createElement("div");
+    let h6Hashtag = document.createElement("h6");
+    let h6 = document.createElement("h6");
+    let h6Nombre = document.createElement("h6");
+    let h6descripcion = document.createElement("h6");
+    let h1Titulo = document.createElement("h1");
+    let inputColapse = document.createElement("input");
+    let imgPersona = document.createElement("img");
 
+    let buttonModal = document.createElement("button");
 
-  //Darle los valores de la publicacion actual
+    //Darle los valores de la publicacion actual
 
-  let publicacionActual = publicaciones[i];
+    let publicacionActual = publicaciones[i];
 
+    //Pasarle las clases a los elementos
 
-  //Pasarle las clases a los elementos
+    divSombra.classList.add("shadow-lg", "p3", "bg-white", "rounded");
+    imgPersona.classList.add("fotoPersona");
+    h6Nombre.classList.add("nombrePersona");
+    h6Hashtag.classList.add("hashtag");
+    h1Titulo.classList.add("titulo");
+    divcollapse.classList.add("collapse");
+    inputColapse.classList.add("down");
+    buttonModal.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
 
-  divSombra.classList.add("shadow-lg","p3","bg-white","rounded");
-  imgPersona.classList.add("fotoPersona");
-  h6Nombre.classList.add("nombrePersona");
-  h6Hashtag.classList.add("hashtag");
-  h1Titulo.classList.add("titulo");
-  divcollapse.classList.add("collapse");
-  inputColapse.classList.add("down");
-  buttonModal.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
+    //Pasarle atributos a los elementos
 
-  //Pasarle atributos a los elementos
+    imgPersona.setAttribute("src", "img/putopng.jpg");
+    inputColapse.setAttribute("type", "image");
+    inputColapse.setAttribute("src", "img/down.png");
+    inputColapse.setAttribute("data-toggle", "collapse");
+    inputColapse.setAttribute(
+      "data-target",
+      "#demo" + publicacionActual.idpublicacion
+    );
+    divcollapse.setAttribute("id", "demo" + publicacionActual.idpublicacion);
+    buttonModal.setAttribute("type", "button");
+    buttonModal.setAttribute("data-toggle", "modal");
+    buttonModal.setAttribute("data-target", "#modal");
+    buttonModal.setAttribute("id", "modal" + publicacionActual.idpublicacion);
+    // Darle los value a los elementos html
 
-  imgPersona.setAttribute("src", "img/putopng.jpg");
-  inputColapse.setAttribute("type","image");
-  inputColapse.setAttribute("src","img/down.png");
-  inputColapse.setAttribute("data-toggle","collapse");
-  inputColapse.setAttribute("data-target","#demo"+publicacionActual.idpublicacion);
-  divcollapse.setAttribute("id","demo"+publicacionActual.idpublicacion);
-  buttonModal.setAttribute("type","button");
-  buttonModal.setAttribute("data-toggle","modal");
-  buttonModal.setAttribute("data-target","#modal");
-  buttonModal.setAttribute("id","modal"+publicacionActual.idpublicacion);
- // Darle los value a los elementos html
-
- h6.innerText = "#"+publicacionActual.etiqueta;
- h1Titulo.innerText=publicacionActual.titulo;
- h6.innerText="Publicado: "+publicacionActual.fecha;
- h6descripcion.innerText= publicacionActual.descripcion;
- h6Hashtag.innerHTML = publicacionActual.etiqueta;
- buttonModal.innerHTML = "¡Postula!";
- let formData = new this.FormData();
- let personaAjax = {};
- personaAjax.rut = publicacionActual.rut;
- formData.append("rut", personaAjax.rut);
- cargarPersona(formData).then(response=>{
-  for (let i = 0; i < response.length; i++) {
-    let personaActual=response[i];
-    h6Nombre.innerText = personaActual.nombre +" "+ personaActual.apellidoP +" "+ personaActual.apellidoM;
-  }
-
-  divSombra.appendChild(div);
-  divSombra.appendChild(h6Hashtag);
-  divSombra.appendChild(h1Titulo);
-  divSombra.appendChild(h6);
-  divSombra.appendChild(inputColapse);
-  divSombra.appendChild(divcollapse);
-  div.appendChild(imgPersona);
-  div.appendChild(h6Nombre);
-  divcollapse.appendChild(h6descripcion);
-  divcollapse.appendChild(buttonModal);
-  cuerpo.appendChild(divSombra);
-  
-  document.getElementById("modal"+publicacionActual.idpublicacion).addEventListener("click", function() {
-    let modalbdy= document.querySelector("#modalbdy1");
-
-    //Crear  el formulario
-
-    let form = document.createElement("form");
-    let divGroup = document.createElement("div");
-    let labelPregunta = document.createElement("label");
-    let inputRespuesta = document.createElement("input");
-    let botonEnviar = document.createElement("button");
-
-    // Pasarle las clases a los elementos creados
-    divGroup.classList.add("form-group");
-    inputRespuesta.classList.add("form-control");
-    botonEnviar.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
-    //Eliminarlos si ya existen
-    
-    $("#modalbdy1").empty();
-
-    //Obtener la pregunta desde la bd
-
-    let preguntaAjax = new FormData();
-    preguntaAjax.append("idpublicacion", publicacionActual.idpublicacion);
-    preguntaAjax.append("idusuario", publicacionActual.idusuario);
-    preguntaAjax.append("rut", publicacionActual.rut);
-    obtenerPregunta(preguntaAjax).then(response=>{
-      if(response[0].idpregunta==" "){
-        labelPregunta.innerText = "No hay pregunta para usted";
-      }else{
-      labelPregunta.innerText = response[0].texto;
+    h6.innerText = "#" + publicacionActual.etiqueta;
+    h1Titulo.innerText = publicacionActual.titulo;
+    h6.innerText = "Publicado: " + publicacionActual.fecha;
+    h6descripcion.innerText = publicacionActual.descripcion;
+    h6Hashtag.innerHTML = publicacionActual.etiqueta;
+    buttonModal.innerHTML = "¡Postula!";
+    let formData = new this.FormData();
+    let personaAjax = {};
+    personaAjax.rut = publicacionActual.rut;
+    formData.append("rut", personaAjax.rut);
+    cargarPersona(formData).then((response) => {
+      for (let i = 0; i < response.length; i++) {
+        let personaActual = response[i];
+        h6Nombre.innerText =
+          personaActual.nombre +
+          " " +
+          personaActual.apellidoP +
+          " " +
+          personaActual.apellidoM;
       }
-      $("label").css("margin-left","70px");
-      inputRespuesta.setAttribute("id","respuesta");
-      let idpregunta = response[0].idpregunta;
-      console.log(idpregunta);
-      let respuestaJax = {};
-      respuestaJax.idpregunta = idpregunta;
-    })
 
-    botonEnviar.innerText= "Enviar";
-    botonEnviar.setAttribute("id","enviar");
-    botonEnviar.setAttribute("type","button");
+      divSombra.appendChild(div);
+      divSombra.appendChild(h6Hashtag);
+      divSombra.appendChild(h1Titulo);
+      divSombra.appendChild(h6);
+      divSombra.appendChild(inputColapse);
+      divSombra.appendChild(divcollapse);
+      div.appendChild(imgPersona);
+      div.appendChild(h6Nombre);
+      divcollapse.appendChild(h6descripcion);
+      divcollapse.appendChild(buttonModal);
+      cuerpo.appendChild(divSombra);
 
-    botonEnviar.style.marginTop = "10px";
-    //form.setAttribute();
-    
+      document
+        .getElementById("modal" + publicacionActual.idpublicacion)
+        .addEventListener("click", function () {
+          let modalbdy = document.querySelector("#modalbdy1");
 
+          //Crear  el formulario
 
-    form.appendChild(divGroup);
-    divGroup.appendChild(labelPregunta);
-    divGroup.appendChild(inputRespuesta);
-    divGroup.appendChild(botonEnviar);
-    modalbdy.appendChild(form);
+          let form = document.createElement("form");
+          let divGroup = document.createElement("div");
+          let labelPregunta = document.createElement("label");
+          let inputRespuesta = document.createElement("input");
+          let botonEnviar = document.createElement("button");
 
-    
+          // Pasarle las clases a los elementos creados
+          divGroup.classList.add("form-group");
+          inputRespuesta.classList.add("form-control");
+          botonEnviar.classList.add("btn", "btn-dark", "btn-lg", "btn-block");
+          //Eliminarlos si ya existen
 
-    document.getElementById("enviar").addEventListener("click", function () {
-      let respuesta = document.querySelector("#respuesta").value;
-      console.log(respuesta);
-      let publicacionActual = publicaciones[i];
-      let preguntaAjax = new FormData();
-      preguntaAjax.append("idpublicacion", publicacionActual.idpublicacion);
-      preguntaAjax.append("idusuario", publicacionActual.idusuario);
-      preguntaAjax.append("rut", publicacionActual.rut);
-      obtenerPregunta(preguntaAjax).then(response=>{
-        if(!response[0].idpregunta == " "){
-          let idpregunta = response[0].idpregunta;
-          console.log(idpregunta);
-          let respuestaJax = {};
-          respuestaJax.idpregunta = idpregunta;
-          respuestaJax.respuesta=respuesta;
-          let formRes = new FormData();
-          formRes.append("respuesta",respuestaJax.idpregunta);
-          formRes.append("idpregunta",respuestaJax.respuesta);
-          crearRespuesta(formRes).then(response=>{
-            datosPersona().then(response=>{
-              let postulanteAjax = new FormData();
-              postulanteAjax.append("nombre", response[0].nombre);
-              postulanteAjax.append("apellidoM", response[0].apellidoM);
-              postulanteAjax.append("apellidoP", response[0].apellidoP);
-              crearPostulante(postulanteAjax).then(response=>{
-                consultarPostulante().then(response=>{
+          $("#modalbdy1").empty();
 
-                let postulacion = {};
-                console.log(publicacionActual.idusuario);
-                let idp = publicacionActual.idpublicacion;
-                let idu = publicacionActual.idusuario;
-                let ru = publicacionActual.rut;
-                let idpo = response[0].idpostulante;
+          //Obtener la pregunta desde la bd
 
-                postulacion.idp=idp;
-                postulacion.idu=idu;
-                postulacion.ru=ru;
-                postulacion.idpo=idpo;
+          let preguntaAjax = new FormData();
+          preguntaAjax.append("idpublicacion", publicacionActual.idpublicacion);
+          preguntaAjax.append("idusuario", publicacionActual.idusuario);
+          preguntaAjax.append("rut", publicacionActual.rut);
+          obtenerPregunta(preguntaAjax).then((response) => {
+            if (response[0].idpregunta == " ") {
+              labelPregunta.innerText = "No hay pregunta para usted";
+            } else {
+              labelPregunta.innerText = response[0].texto;
+            }
+            $("label").css("margin-left", "70px");
+            inputRespuesta.setAttribute("id", "respuesta");
+            let idpregunta = response[0].idpregunta;
+            console.log(idpregunta);
+            let respuestaJax = {};
+            respuestaJax.idpregunta = idpregunta;
+          });
 
-                let postulacionAjax = new FormData();
+          botonEnviar.innerText = "Enviar";
+          botonEnviar.setAttribute("id", "enviar");
+          botonEnviar.setAttribute("type", "button");
 
-                postulacionAjax.append("idpostulante",postulacion.idpo);
-                postulacionAjax.append("idpublicacion",postulacion.idp);
-                postulacionAjax.append("idusuario",postulacion.idu);
-                postulacionAjax.append("rut",postulacion.ru);
+          botonEnviar.style.marginTop = "10px";
+          //form.setAttribute();
 
-                crearPostulacion(postulacionAjax).then(response=>{
-                  alert("Felicidades, ha postulado con exito");
-                  location.reload();
-                })
+          form.appendChild(divGroup);
+          divGroup.appendChild(labelPregunta);
+          divGroup.appendChild(inputRespuesta);
+          divGroup.appendChild(botonEnviar);
+          modalbdy.appendChild(form);
 
-                })
-              })
-            })
-        })
-        }else{
-          return false;
-        }
-        
-      })
-  
-    })
+          document
+            .getElementById("enviar")
+            .addEventListener("click", function () {
+              let respuesta = document.querySelector("#respuesta").value;
+              console.log(respuesta);
+              let publicacionActual = publicaciones[i];
+              let preguntaAjax = new FormData();
+              preguntaAjax.append(
+                "idpublicacion",
+                publicacionActual.idpublicacion
+              );
+              preguntaAjax.append("idusuario", publicacionActual.idusuario);
+              preguntaAjax.append("rut", publicacionActual.rut);
+              obtenerPregunta(preguntaAjax).then((response) => {
+                if (!response[0].idpregunta == " ") {
+                  let idpregunta = response[0].idpregunta;
+                  console.log(idpregunta);
+                  let respuestaJax = {};
+                  respuestaJax.idpregunta = idpregunta;
+                  respuestaJax.respuesta = respuesta;
+                  let formRes = new FormData();
+                  formRes.append("respuesta", respuestaJax.idpregunta);
+                  formRes.append("idpregunta", respuestaJax.respuesta);
+                  crearRespuesta(formRes).then((response) => {
+                    datosPersona().then((response) => {
+                      let postulanteAjax = new FormData();
+                      postulanteAjax.append("nombre", response[0].nombre);
+                      postulanteAjax.append("apellidoM", response[0].apellidoM);
+                      postulanteAjax.append("apellidoP", response[0].apellidoP);
+                      crearPostulante(postulanteAjax).then((response) => {
+                        consultarPostulante().then((response) => {
+                          let postulacion = {};
+                          console.log(publicacionActual.idusuario);
+                          let idp = publicacionActual.idpublicacion;
+                          let idu = publicacionActual.idusuario;
+                          let ru = publicacionActual.rut;
+                          let idpo = response[0].idpostulante;
 
-    
+                          postulacion.idp = idp;
+                          postulacion.idu = idu;
+                          postulacion.ru = ru;
+                          postulacion.idpo = idpo;
 
-  });
-  
+                          let postulacionAjax = new FormData();
 
-  }) 
-}
+                          postulacionAjax.append(
+                            "idpostulante",
+                            postulacion.idpo
+                          );
+                          postulacionAjax.append(
+                            "idpublicacion",
+                            postulacion.idp
+                          );
+                          postulacionAjax.append("idusuario", postulacion.idu);
+                          postulacionAjax.append("rut", postulacion.ru);
 
-
-}
+                          crearPostulacion(postulacionAjax).then((response) => {
+                            alert("Felicidades, ha postulado con exito");
+                            location.reload();
+                          });
+                        });
+                      });
+                    });
+                  });
+                } else {
+                  return false;
+                }
+              });
+            });
+        });
+    });
+  }
+};
 /**
  * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
  */
-cargarPersona = async(formData) =>{
+cargarPersona = async (formData) => {
   const response = await axios.post("api/persona/queryPersona.php", formData);
   return await response.data;
-}
+};
 /**
  * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
  */
-obtenerPregunta = async(preguntaAjax)=>{
-const response = await axios.post("api/pregunta/queryPregunta.php", preguntaAjax);
-return await response.data;
-}
+obtenerPregunta = async (preguntaAjax) => {
+  const response = await axios.post(
+    "api/pregunta/queryPregunta.php",
+    preguntaAjax
+  );
+  return await response.data;
+};
 /**
  * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
  */
-crearRespuesta = async(formRes)=>{
- const response = await axios.post("api/respuesta/createRespuesta.php",formRes);
- return await response.data;
-}
+crearRespuesta = async (formRes) => {
+  const response = await axios.post(
+    "api/respuesta/createRespuesta.php",
+    formRes
+  );
+  return await response.data;
+};
 
-datosPersona = async()=>{
-const response = await axios.get("api/persona/datosPersona.php");
-return await response.data;
-}/**
+datosPersona = async () => {
+  const response = await axios.get("api/persona/datosPersona.php");
+  return await response.data;
+};
+/**
  * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
  */
-crearPostulante = async (postulanteAjax) =>{
- const response = await axios.post("api/postulante/createPostulante.php", postulanteAjax);
- return await response.data;
-}
+crearPostulante = async (postulanteAjax) => {
+  const response = await axios.post(
+    "api/postulante/createPostulante.php",
+    postulanteAjax
+  );
+  return await response.data;
+};
 
-consultarPostulante = async()=>{
+consultarPostulante = async () => {
   const response = await axios.get("api/postulante/queryPostulante.php");
   return await response.data;
-}
+};
 /**
  * Se le entrega un formulario para que axios le entregue los datos a php para la consulta sql
  */
-crearPostulacion = async(postulacionAjax)=>{
-  const response = await axios.post("api/postulacion/createPostulacion.php",postulacionAjax);
+crearPostulacion = async (postulacionAjax) => {
+  const response = await axios.post(
+    "api/postulacion/createPostulacion.php",
+    postulacionAjax
+  );
   return await response.data;
-}
-
+};
 
 window.obtenerPublicacion();

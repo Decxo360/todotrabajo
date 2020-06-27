@@ -434,10 +434,13 @@ document.getElementById("seleccionado").addEventListener("click", function () {
           location.reload();
         } else {
           for (let i = 0; i < response.length; i++) {
-          
+            let publicacion = response[i];
             let publiajax = new FormData();
+            console.log(response);
+            console.log(publicacion.idpostulante)
             publiajax.append("idpublicacion", publicacion.idpublicacion);
             publicacionid(publiajax).then((response) => {
+              console.log(response);
               
               // Se crean elementos html para poder mostrar los trabajos que has sido seleccionado
 

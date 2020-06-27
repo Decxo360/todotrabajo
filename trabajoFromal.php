@@ -11,8 +11,8 @@
 
       <div class="">
       <div class="search">
-        <input type="text" class="searchTerm" placeholder="¿Que estas buscando?">
-        <button type="submit" class="searchButton"> Buscar
+        <input type="text" class="searchTerm" placeholder="¿Que estas buscando?" id="filtro">
+        <button type="submit" class="searchButton" id="filtrar"> Buscar
           <i class="fa fa-search"></i>
        </button>
       </div>
@@ -28,6 +28,8 @@
             }else{
             require_once "crearPublicacion.php";
             } ?> 
+            <div id="cuerpo">
+            </div>
       
             <h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px;">Trabajos Formales ingresados en nuestra plataforma</h1>
            </div>

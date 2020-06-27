@@ -71,7 +71,7 @@ require_once "api/bd.php";
                     <hr>
                   </div>
                   <div type="button" id="finalizar">
-                    <h6 style="text-align: center;" href="finalizarTrabajo.php">Finalizar trabajos </h6>
+                    <h6 style="text-align: center;" href="finalizarTrabajo.php"><a href="finalizarTrabajo.php" style="color: black; text-decoration:none;" type="text/html">Finalizar trabajos</a> </h6>
                     <hr>
                   </div>
                 </div id="informacion">

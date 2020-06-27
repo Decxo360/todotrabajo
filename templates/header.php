@@ -44,30 +44,30 @@
                         <div class="col-lg-5 Marco centrado shadow p-3 mb-5  rounded">
                             <img class="cuadrado" src="img/global.png" alt="">
                             <h6 class="h6"><img class="chiquito" src="img/clip.png" alt="">   
-                                 Como verga hago muchas cosas de mi vida</h6>
-                                 <h6 class="h6 letra">Nose, pero algo saldrá por el camino bro</h6>
+                                 Como hago muchas cosas de mi vida</h6>
+                                 <h6 class="h6 letra">Nose, pero algo saldrá por el camino brro</h6>
                            
                         </div>
                         <div class="col-lg-5 Marco subido shadow p-3 mb-5  rounded">
                             <img class="cuadrado" src="img/cv.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">    
-                                Como verga hago muchas cosas de mi vida</h6>
-                                <h6 class="letra h6">Nose, pero algo saldrá por el camino bro</h6>
+                                Como hago muchas cosas de mi vida</h6>
+                                <h6 class="letra h6">Nose, pero algo saldrá por el camino brro</h6>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-5 Marco centrado shadow p-3 mb-5 rounded">
                             <img class="cuadrado"  src="img/workk.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">  
-                                Como verga hago muchas cosas de mi vida</h6>
-                            <h6 class="h6 letra">Nose, pero algo saldrá por el camino bro</h6>
+                                Como hago muchas cosas de mi vida</h6>
+                            <h6 class="h6 letra">Nose, pero algo saldrá por el camino brro</h6>
                       
                         </div>
                         <div class="col-lg-5 Marco subido shadow p-3 mb-5 rounded">
                             <img class="cuadrado" src="img/user.png" alt="">
                             <h6 class="h6" ><img class="chiquito" src="img/clip.png" alt="">     
-                                Como verga hago muchas cosas de mi vida</h6>
-                            <h6 class=" h6 letra">Nose, pero algo saldrá por el camino bro</h6>
+                                Como hago muchas cosas de mi vida</h6>
+                            <h6 class=" h6 letra">Nose, pero algo saldrá por el camino brro</h6>
                           
                         </div>
                     </div>

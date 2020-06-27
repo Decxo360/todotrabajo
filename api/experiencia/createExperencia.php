@@ -7,18 +7,19 @@
   $esPostulado = $_POST["esPostulado"];
   $puntos = $_POST["puntos"];
   $esSubido = $_POST["esSubido"];
+  $xp = $_POST["xp"];
   $idusuario = $_POST["idusuario"];
   $rut = $_POST["rut"];
    /**
    * Se crea la consulta sql en este caso insertar valores en una
    */
-  $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubido,idusuario,rut)"
-        ." VALUES(?,?,?,?,?,?)";
+  $sql = "INSERT INTO experiencia(esRealizado,esPostulado,puntos,esSubido,xp,idusuario,rut)"
+        ." VALUES(?,?,?,?,?,?,?)";
   $mysqli = conectar();
   $respuesta = new stdClass();
   if($mysqli){
       $st = $mysqli->prepare($sql);
-      $st->bind_param("iisiis",$esRealizado,$esPostulado,$puntos,$esSubido,$idusuario,$rut);
+      $st->bind_param("iisiiis",$esRealizado,$esPostulado,$puntos,$esSubido,$xp,$idusuario,$rut);
       $st->execute();
       $st->close();
       $respuesta->resultado = true;
