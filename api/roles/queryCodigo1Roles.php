@@ -1,6 +1,12 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
 require_once "../bd.php";
 $codigo = $_POST["codigo"];
+/**
+ * Consulta cuando el codigo sea igual a 1 ordenado por codigo de forma descendiente con limite de una row
+ */
 $sql = "SELECT * FROM roles WHERE (codigo = ?) ORDER BY codigo DESC LIMIT 1 ";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

@@ -3,6 +3,9 @@ require_once "../bd.php";
 session_start();
 $idusuario = $_SESSION["usuario"]->idusuario ;
 $rol = "Trabajador";
+/**
+ * Consulta sql que indica que traiga todo cuando sea el idusuario obtenido por axios y cuando el rol sea trabajador
+ */
 $sql = "SELECT * FROM roles WHERE (idusuario = ? && rol = ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

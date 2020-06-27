@@ -1,7 +1,13 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos
+ */
     require_once "../bd.php";
     $rut = $_POST["rut"];
     $mysqli = conectar();
+    /**
+     * Sentencia sql que traiga todo cuando rut sea igual a el obtenido po axios
+     */
     $st = $mysqli->prepare("SELECT * FROM persona 
         WHERE(rut=?)");
     $st->bind_param("s", $rut);

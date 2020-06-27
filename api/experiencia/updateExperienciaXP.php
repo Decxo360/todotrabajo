@@ -1,6 +1,6 @@
 <?php
 /**
- * Lla a la conexion a la base de datos
+ * Llama a la conexion a la base de datos
  */
   require_once "../bd.php";
   $xp = $_POST["xp"];

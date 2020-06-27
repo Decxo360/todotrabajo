@@ -1,6 +1,9 @@
 <?php
 require_once "../bd.php";
 $idpostulante = $_POST["idpostulante"];
+/**
+ * Sentencia sql que indica que traiga todo cuando la idpostulante sea igual a la obtenida por axios
+ */
 $sql = "SELECT * FROM seleccionado WHERE ( idpostulante = ?)";
 $mysqli = conectar();
 $st = $mysqli->prepare($sql);

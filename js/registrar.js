@@ -139,7 +139,7 @@ function iniciarRegistro(){
         xpAjax.append("idusuario",nuevaExperiencia.idusuariox);
         xpAjax.append("rut", nuevaExperiencia.rut);
         createExperencia(xpAjax).then(response =>{
-         location.reload();
+          location.reload();
         })
       })
     })

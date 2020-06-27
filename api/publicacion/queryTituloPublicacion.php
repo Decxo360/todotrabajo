@@ -1,7 +1,13 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos;
+ */
     require_once "../bd.php";
     $idpublicacion = $_POST["idpublicacion"];
     $mysqli = conectar();
+    /**
+     * Sentencia sql la cual trae todo cuando la idpublicacion sea igual a la obtenida por axios
+     */
     $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (idpublicacion='$idpublicacion')");
     $st->execute();
     $result = $st->get_result();

@@ -1,9 +1,17 @@
 <?php
+
     session_start();
+    /**
+     * Llama a la conexion de la base de datos
+     */
     require_once "../bd.php";
     $rut = $_SESSION["usuario"]->rut;
     $idpublicacion = $_POST["idpublicacion"];
     $mysqli = conectar();
+    /**
+     * Sentencia sql que consulta todo de la publicacion cuando el rut sea igual a la de la sesion y cunado la id de la publicaciom
+     * sea igual a la obtenida por axios
+     */
     $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (rut='$rut' && idpublicacion='$idpublicacion')");
     $st->execute();
     $result = $st->get_result();

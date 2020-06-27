@@ -6,6 +6,9 @@
   $idpostulante = $_POST["idpostulante"];
   $idusuario = $_POST["idusuario"];
   $rut = $_POST["rut"];
+  /**
+   * Crea al seleccionado con los datos obtenidos por axios
+   */
   $sql = "INSERT INTO seleccionado( esEnviado,numEnviado,idpostulante,idpublicacion,idusuario,rut)"
         ." VALUES(?,?,?,?,?,?)";
   $mysqli = conectar();

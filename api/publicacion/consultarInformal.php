@@ -1,6 +1,12 @@
 <?php
+/**
+ * Llama a la conexion de la base de datos:
+ */
     require_once "../bd.php";
     $mysqli = conectar();
+    /**
+     * Manda la sentencia sql para consultar todo cuando el tipoPublicacion sea igual a informal
+     */
     $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (tipoPublicacion='informal')");
     $st->execute();
     $result = $st->get_result();

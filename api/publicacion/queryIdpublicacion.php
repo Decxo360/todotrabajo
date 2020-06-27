@@ -1,22 +1,21 @@
 <?php
+/**
+ * Llama a la base de datos
+ */
     require_once "../bd.php";
-    $descripcion = $_POST["descripcion"]; // arreglos asociativo
-    $aPagar = $_POST["aPagar"];
-    $ubicacion = $_POST["ubicacion"];
-    $fecha = $_POST["fecha"];
-    $titulo = $_POST["titulo"];
-    $fechafinal = $_POST["fechafinal"];
+/**
+ * Consulta con sesion
+ */
     session_start();
     $idusuario = $_SESSION["usuario"]->idusuario ;
     $rut= $_SESSION["usuario"]->rut;
-    $tipoPublicacion;
-    if($_SESSION["usuario"]->tipoUsuario == "usuario"){
-      $tipoPublicacion = "informal";
-    }else{
-      $tipoPublicacion = "formal";
-    }
+
     $etiqueta=$_POST["etiqueta"];
     $mysqli = conectar();
+    /**
+     * Sentencia sql la cual dice que le traiga toda la publicacion cuando sea idusario igual a la de la sesion
+     * y cuando el rut sea igual a la de la sesion
+     */
     $st = $mysqli->prepare("SELECT * FROM publicacion WHERE (idusuario=? && rut=?) ORDER BY idpublicacion DESC LIMIT 1");
     $st->bind_param("is",$idusuario,$rut);
     $st->execute();

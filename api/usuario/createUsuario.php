@@ -4,6 +4,9 @@
   $pass = $_POST["pass"];
   $tipousuario = $_POST["tipousuario"];
   $rut = $_POST["rut"];
+  /**
+   * Sentencia sql que indica que inserte los datos obtenidos por axios
+   */
   $sql = "INSERT INTO usuario(email,pass,tipousuario,rut)"
         ." VALUES(?,?,?,?)";
   $mysqli = conectar();

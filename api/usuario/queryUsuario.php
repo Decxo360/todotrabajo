@@ -6,6 +6,10 @@ require_once "../bd.php";
 
 $email = $_POST["email"];
 $password = $_POST["pass"];
+/**
+ * Sentencia sql que indica que traiga todo cuando email sea igaul al obtenido de axios y la pass sea igual a
+ * la obtenida por axios
+ */
 $sql = "SELECT * FROM usuario WHERE email=?&&pass=? limit 1";
 
 $mysqli = conectar();
